@@ -14,8 +14,6 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-
-        /* [NOVO] Estilos para o vídeo de fundo */
         .hero-video-container {
             position: absolute;
             top: 0;
@@ -29,18 +27,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.6); /* Escurece o vídeo para o texto ficar legível */
+            filter: brightness(0.6);
         }
-        
-        /* [NOVO] Efeito Glassmorphism */
         .glass-card {
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        /* [NOVO] Animação de Texto Palavra por Palavra */
         #animated-headline .word {
             display: inline-block;
             opacity: 0;
@@ -54,8 +48,6 @@
                 transform: translateY(0);
             }
         }
-        
-        /* [NOVO] Animação de Botão Refinada */
         .cta-button {
             transition: all 0.3s ease-in-out;
             box-shadow: 0 0 20px rgba(22, 163, 74, 0.7);
@@ -63,7 +55,7 @@
         }
         .cta-button:hover {
             transform: translateY(-5px) scale(1.05);
-            animation-play-state: paused; /* Pausa o brilho no hover para destacar o efeito do mouse */
+            animation-play-state: paused;
             box-shadow: 0 0 35px rgba(22, 163, 74, 1);
         }
         @keyframes pulse-glow {
@@ -74,7 +66,6 @@
                 box-shadow: 0 0 30px rgba(22, 163, 74, 0.8);
             }
         }
-
         .testimonial-card {
             background: linear-gradient(135deg, #1f2937, #374151);
         }
@@ -102,15 +93,12 @@
                 <span class="bg-green-600 text-white font-semibold py-1 px-4 rounded-full text-sm uppercase" data-aos="fade-in" data-aos-delay="1000">
                     A jornada para o seu melhor corpo começa agora
                 </span>
-                
                 <h1 id="animated-headline" class="text-4xl md:text-6xl font-black mt-6 leading-tight text-shadow-lg">
                     Diga Adeus às Dietas Frustrantes e Olá Para a Sua Melhor Versão.
                 </h1>
-                
                 <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-aos="fade-in" data-aos-delay="1200">
                     Descubra o método passo a passo para queimar gordura de forma inteligente, desinchar o corpo e conquistar um rosto mais fino — sem passar fome e com resultados que duram.
                 </p>
-                
                 <div class="mt-10" data-aos="zoom-in" data-aos-delay="1500">
                     <a href="#preco" class="cta-button inline-block bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-lg">
                         🔥 QUERO COMEÇAR MINHA TRANSFORMAÇÃO
@@ -280,11 +268,25 @@
                     <h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-2">Você Desbloqueou 72% de Desconto!</h2>
                     <p class="mt-4 text-slate-600 text-lg">Seu comprometimento garantiu o acesso ao Pacote Completo por um valor que não se repetirá:</p>
                     
-                    <div class="text-left my-8 space-y-3 bg-slate-50 border-l-4 border-green-500 p-6 rounded-r-lg">
-                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> Guia Reset Metabólico Completo (Valor: R$97,00)</p>
-                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> <span class="bg-yellow-300 px-1 rounded">BÔNUS 1:</span> Ebook com 50 Receitas Fáceis (Valor: R$47,00)</p>
-                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> <span class="bg-yellow-300 px-1 rounded">BÔNUS 2:</span> Planilhas de Acompanhamento (Valor: R$27,00)</p>
-                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> <span class="bg-yellow-300 px-1 rounded">BÔNUS 3:</span> Acesso à Comunidade VIP (Valor: Incalculável)</p>
+                    <div class="text-left my-8 space-y-5 bg-slate-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                        <div class="flex items-start">
+                            <span class="text-green-500 mr-3 text-xl flex-shrink-0 leading-tight">✔️</span>
+                            <p class="font-bold text-slate-800">
+                                <strong class="text-green-600">Coma o que Você Ama Sem Culpa:</strong> Aprenda o segredo para incluir pizza e seus pratos favoritos na dieta e AINDA ver o número na balança despencar.
+                            </p>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-green-500 mr-3 text-xl flex-shrink-0 leading-tight">✔️</span>
+                            <p class="font-bold text-slate-800">
+                                <strong class="text-green-600">Resultados Visíveis na Primeira Semana:</strong> Siga um plano de 7 dias à prova de falhas, projetado para desinchar seu corpo e fazer você se sentir mais leve imediatamente.
+                            </p>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-green-500 mr-3 text-xl flex-shrink-0 leading-tight">✔️</span>
+                            <p class="font-bold text-slate-800">
+                                <strong class="text-green-600">Um Rosto Mais Fino e Definido:</strong> Finalmente revele o contorno do seu rosto e elimine a papada com um método que te deixará irreconhecível nas selfies.
+                            </p>
+                        </div>
                     </div>
 
                     <p class="text-lg text-slate-700">De <s class="text-red-500">R$171,00</s> por um pagamento <span class="font-bold">único e vitalício</span> de apenas:</p>
