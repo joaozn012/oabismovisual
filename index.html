@@ -1,168 +1,404 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia Definitivo para Emagrecer de Forma Saudável</title>
+    <title>Guia Definitivo para Emagrecer de Forma Saudável e Sustentável</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" as="style">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
+
+        /* [NOVO] Estilos para o vídeo de fundo */
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6); /* Escurece o vídeo para o texto ficar legível */
+        }
+        
+        /* [NOVO] Efeito Glassmorphism */
+        .glass-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* [NOVO] Animação de Texto Palavra por Palavra */
+        #animated-headline .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInWord 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+            animation-delay: var(--delay);
+        }
+        @keyframes fadeInWord {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* [NOVO] Animação de Botão Refinada */
         .cta-button {
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.6), inset 0 0 5px rgba(16, 185, 129, 0.8);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 20px rgba(22, 163, 74, 0.7);
+            animation: pulse-glow 2s infinite alternate;
         }
         .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(16, 185, 129, 1), inset 0 0 10px rgba(16, 185, 129, 1);
+            transform: translateY(-5px) scale(1.05);
+            animation-play-state: paused; /* Pausa o brilho no hover para destacar o efeito do mouse */
+            box-shadow: 0 0 35px rgba(22, 163, 74, 1);
         }
-        .highlight-card {
-            border: 2px solid #10B981;
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2), 0 8px 10px -6px rgba(16, 185, 129, 0.2);
+        @keyframes pulse-glow {
+            from {
+                box-shadow: 0 0 15px rgba(22, 163, 74, 0.6);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(22, 163, 74, 0.8);
+            }
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #1f2937, #374151);
+        }
+        .quiz-button {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-button:hover {
+            background-color: #047857;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-slate-50">
 
-    <header class="bg-white">
-        <div class="container mx-auto px-6 py-12 md:py-20 text-center">
-            <h1 class="text-3xl md:text-5xl font-black text-gray-800 leading-tight">
-                Transforme Seu Corpo e Sua Vida: O Guia Definitivo para Emagrecer de Forma Saudável!
-            </h1>
-            <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                Cansado(a) de dietas que não funcionam e promessas vazias?
-                Descubra o método 100% funcional para queimar gordura, eliminar o inchaço e até mesmo afinar o rosto, com um plano passo a passo que você pode começar HOJE.
-            </p>
-            <div class="mt-10">
-                <a href="#preco" class="cta-button inline-block bg-emerald-500 text-white font-bold text-xl py-4 px-10 rounded-lg" aria-label="Quero transformar meu corpo agora - ir para seção de preço">
-                    👉 QUERO TRANSFORMAR MEU CORPO AGORA!
-                </a>
+    <header class="relative text-white h-screen min-h-[700px] flex items-center justify-center">
+        <div class="hero-video-container">
+            <video id="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=2069&auto=format&fit=crop">
+                <source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="glass-card max-w-4xl mx-auto rounded-2xl p-8 md:p-12">
+                <span class="bg-green-600 text-white font-semibold py-1 px-4 rounded-full text-sm uppercase" data-aos="fade-in" data-aos-delay="1000">
+                    A jornada para o seu melhor corpo começa agora
+                </span>
+                
+                <h1 id="animated-headline" class="text-4xl md:text-6xl font-black mt-6 leading-tight text-shadow-lg">
+                    Diga Adeus às Dietas Frustrantes e Olá Para a Sua Melhor Versão.
+                </h1>
+                
+                <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-aos="fade-in" data-aos-delay="1200">
+                    Descubra o método passo a passo para queimar gordura de forma inteligente, desinchar o corpo e conquistar um rosto mais fino — sem passar fome e com resultados que duram.
+                </p>
+                
+                <div class="mt-10" data-aos="zoom-in" data-aos-delay="1500">
+                    <a href="#preco" class="cta-button inline-block bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-lg">
+                        🔥 QUERO COMEÇAR MINHA TRANSFORMAÇÃO
+                    </a>
+                    <p class="mt-4 text-sm text-slate-300">Compra Segura | Acesso Imediato e Vitalício</p>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="bg-gray-800 text-white py-16">
+    <section class="bg-slate-100 py-16">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-10">Você se identifica com isso?</h2>
-            <div class="max-w-2xl mx-auto space-y-6">
-                <div class="flex items-start space-x-4 p-4 bg-gray-700/50 rounded-lg">
-                    <span class="text-2xl">❓</span>
-                    <p class="text-lg">Tentou de tudo para emagrecer, mas sempre acaba recuperando o peso?</p>
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800" data-aos="fade-down">A Luta Contra a Balança Parece Interminável?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-white p-5 rounded-full shadow-lg mb-4">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg text-slate-600">O famoso "efeito sanfona" te persegue, não importa o que você faça?</p>
                 </div>
-                <div class="flex items-start space-x-4 p-4 bg-gray-700/50 rounded-lg">
-                    <span class="text-2xl">❓</span>
-                    <p class="text-lg">Se sentiu perdido(a) sem saber o que comer ou como treinar de forma eficiente?</p>
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+                     <div class="bg-white p-5 rounded-full shadow-lg mb-4">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <p class="text-lg text-slate-600">Você se sente perdido(a), sem um plano claro do que comer ou como se exercitar?</p>
                 </div>
-                <div class="flex items-start space-x-4 p-4 bg-gray-700/50 rounded-lg">
-                    <span class="text-2xl">❓</span>
-                    <p class="text-lg">Gastou dinheiro com soluções "mágicas" que nunca trouxeram resultados duradouros?</p>
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+                     <div class="bg-white p-5 rounded-full shadow-lg mb-4">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg>
+                    </div>
+                    <p class="text-lg text-slate-600">Já investiu em pílulas e métodos "milagrosos" que só levaram sua esperança (e dinheiro)?</p>
                 </div>
-                 <div class="flex items-start space-x-4 p-4 bg-gray-700/50 rounded-lg">
-                    <span class="text-2xl">❓</span>
-                    <p class="text-lg">Olhou no espelho e se sentiu incomodado(a) com a gordurinha na barriga, nos braços ou até mesmo com a papada?</p>
-             </div>
-            </div>
-            <p class="text-center mt-8 text-xl font-semibold text-emerald-300 max-w-2xl mx-auto">Se você respondeu SIM a alguma dessas perguntas, este guia foi feito para você.</p>
-        </div>
-    </section>
-
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-           <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">Veja o que você vai destravar com este guia:</h2>
-            <p class="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">Este não é apenas mais um ebook.
-                É o seu mapa completo para se libertar do excesso de peso para sempre. Chega de confusão e frustração!
-                Inclui cardápio de 7 dias, treinos em casa e estratégias exclusivas para afinar o rosto.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-emerald-600 mb-3">✅ O Segredo para Comer de Tudo e Ainda Emagrecer</h3>
-                    <p class="text-gray-600">Aprenda a montar pratos deliciosos e inteligentes, sem passar fome e sem cortar o que você gosta.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-emerald-600 mb-3">✅ Cardápio Prático de 7 Dias "Comece Amanhã"</h3>
-                    <p class="text-gray-600">Um plano alimentar completo com comidas de verdade, para você desinchar e ver os primeiros resultados na balança já na primeira semana.</p>
-                </div>
-                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-emerald-600 mb-3">✅ Treinos Queimam Gordura em Minutos</h3>
-                    <p class="text-gray-600">Rotinas eficientes para fazer em casa, adaptadas para qualquer nível.
-                        Acelere seu metabolismo dedicando poucos minutos por dia!</p>
-                </div>
-                <div class="bg-emerald-50 p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 highlight-card">
-                    <span class="text-sm font-bold bg-emerald-500 text-white py-1 px-3 rounded-full inline-block mb-3">GUIA INÉDITO</span>
-                     <h3 class="text-xl font-bold text-emerald-700 mb-3">✅ Como Afinar o Rosto e Reduzir a Papada</h3>
-                    <p class="text-gray-700">Um capítulo exclusivo revelando as verdadeiras causas da papada e das bochechas cheias, com estratégias práticas para conquistar um rosto mais fino.</p>
-                </div>
-                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-emerald-600 mb-3">✅ O Fim do "Efeito Platô"</h3>
-                    <p class="text-gray-600">Descubra o que fazer quando o peso estaciona na balança e mantenha sua motivação em alta para nunca mais desistir no meio do caminho.</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-emerald-600 mb-3">✅ Blindagem Mental e Emocional</h3>
-                     <p class="text-gray-600">Aprenda a controlar o estresse e a ansiedade que te fazem comer por impulso e a ter noites de sono que realmente recuperam e aceleram a queima de gordura.</p>
+                 <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-white p-5 rounded-full shadow-lg mb-4">
+                        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <p class="text-lg text-slate-600">A imagem no espelho te incomoda, afetando sua autoestima e confiança?</p>
                 </div>
             </div>
+            <p class="text-center mt-12 text-xl font-semibold text-green-700 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">Se você disse SIM para qualquer uma dessas perguntas, saiba que a culpa não é sua. Você só não teve acesso ao método certo. Até agora.</p>
         </div>
     </section>
 
     <section class="py-20 bg-white">
-         <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">O que as alunas estão dizendo:</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div class="bg-gray-50 p-6 rounded-lg text-center">
-                    <p class="text-gray-600 italic mb-4">"Perdi 5kg na primeira semana sem passar fome!
-                        O cardápio é prático e os treinos curtos mudaram tudo."</p>
-                    <p class="font-bold text-emerald-600">- Maria S., 35 anos</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg text-center">
-                    <p class="text-gray-600 italic mb-4">"Finalmente entendi como afinar o rosto.
-                        Meu queixo duplo sumiu em 3 semanas. Recomendo!"</p>
-                    <p class="font-bold text-emerald-600">- Ana L., 42 anos</p>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg text-center">
-                    <p class="text-gray-600 italic mb-4">"Quebrei o platô e me sinto com mais energia. Vale cada centavo!"</p>
-                    <p class="font-bold text-emerald-600">- João P., 28 anos</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="preco" class="bg-gray-100 py-20">
         <div class="container mx-auto px-6">
-            <div class="bg-white rounded-xl shadow-2xl max-w-2xl mx-auto p-8 md:p-12 text-center">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Quanto vale ter a autoestima de volta, vestir as roupas que você ama e se sentir cheio(a) de energia todos os dias?</h2>
-                <p class="mt-4 text-gray-600">Uma única consulta com um nutricionista pode custar mais de R$200. Um mês de academia, facilmente passa de R$100. Mas hoje, você não vai pagar nem perto disso. Acesso vitalício ao guia completo por um pagamento único.</p>
-
-                <div class="my-8 bg-emerald-50 p-6 rounded-lg">
-                    <p class="text-lg text-gray-700">Adquira seu acesso imediato por apenas:</p>
-                    <p class="text-5xl md:text-6xl font-black text-emerald-600 my-2">R$ 47,90</p>
-                     <p class="text-lg font-semibold text-gray-700">É menos que o preço de uma pizza!
-                        Um pequeno investimento na sua saúde e felicidade. Inclui bônus: atualizações gratuitas e suporte via email.</p>
+            <div class="text-center mb-16" data-aos="fade-down">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Sua Jornada de Transformação Começa Aqui</h2>
+                <p class="text-lg text-slate-600 mt-4 max-w-3xl mx-auto">Este é o mapa definitivo para você se libertar do excesso de peso para sempre, com um plano claro, prático e sem complicações.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1512485800893-b08ec1ea59b1?q=80&w=1974&auto=format&fit=crop" alt="Mulher feliz preparando uma salada" class="rounded-lg shadow-2xl w-full h-auto">
                 </div>
-
-                <a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-emerald-500 text-white font-bold text-2xl py-5 px-12 rounded-lg w-full md:w-auto" aria-label="Comprar o guia por R$47,90 agora - acesso imediato">
-                    👉 QUERO TRANSFORMAR MEU CORPO AGORA! 👈
-                </a>
-                <p class="mt-4 text-sm text-gray-500">Acesso Imediato e 100% Digital.
-                    Download instantâneo após pagamento.</p>
-                <p class="mt-2 text-sm text-emerald-600 font-semibold">Garantia de 7 Dias: Se não gostar, devolvemos seu dinheiro!</p>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="200">
+                        <div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Alimentação sem Restrições</h3>
+                            <p class="text-slate-600 mt-1">Aprenda a comer de tudo de forma inteligente, criando um déficit calórico sem passar fome e sem abrir mão do prazer de comer.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="300">
+                        <div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Treinos Rápidos e Eficientes</h3>
+                            <p class="text-slate-600 mt-1">Rotinas de 15 a 20 minutos para fazer em casa, que aceleram seu metabolismo e queimam gordura por horas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 p-4 border-2 border-green-500 rounded-lg bg-green-50" data-aos="fade-left" data-aos-delay="400">
+                        <div class="flex-shrink-0 bg-green-200 text-green-800 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Método Exclusivo: Rosto Fino</h3>
+                            <p class="text-slate-600 mt-1">Estratégias comprovadas para reduzir o inchaço facial e a papada, revelando um contorno facial mais definido.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="500">
+                        <div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800">Blindagem da Mente</h3>
+                            <p class="text-slate-600 mt-1">Domine a ansiedade e a compulsão alimentar, construindo uma mentalidade forte para manter o foco e a motivação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="bg-slate-800 py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="fade-down">Milhares de Vidas Já Foram Transformadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400">
+                        <div class="ml-4">
+                            <p class="font-bold text-lg">Carla Mendes</p>
+                            <p class="text-sm text-slate-300">Perdeu 12kg</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-200">"Eu já tinha tentado de tudo. Esse guia foi a virada de chave! É tão fácil de seguir, e pela primeira vez eu emagreci sem sofrer. Me sinto outra mulher!"</p>
+                </div>
+                 <div class="testimonial-card rounded-lg p-8 text-white shadow-lg lg:scale-105" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400">
+                        <div class="ml-4">
+                            <p class="font-bold text-lg">Ricardo Alves</p>
+                            <p class="text-sm text-slate-300">Perdeu 18kg</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-200">"O melhor investimento que fiz na minha saúde. Perdi a barriga de cerveja e ganhei uma energia que não sentia há anos. Recomendo de olhos fechados."</p>
+                </div>
+                 <div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400">
+                        <div class="ml-4">
+                            <p class="font-bold text-lg">Juliana Ferreira</p>
+                            <p class="text-sm text-slate-300">Perdeu 8kg</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-200">"Sempre tive vergonha do meu rosto redondo e da papada. O capítulo sobre isso vale ouro! Em poucas semanas a diferença no espelho foi gritante."</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-white text-center py-6 px-4">
-        <p>&copy; 2024 O Abismo Visual / Reset Metabólico. Todos os direitos reservados.</p>
-        <p class="text-sm text-gray-400 mt-2 max-w-3xl mx-auto">Este produto não garante a obtenção de resultados.
-            Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados.
-            Consulte um profissional de saúde antes de iniciar qualquer plano.
-            Política de Privacidade: <a href="#" class="underline">clique aqui</a>.</p>
+    <section id="preco" class="bg-slate-100 py-20">
+        <div class="container mx-auto px-6">
+            <div id="quiz-container" class="bg-white rounded-xl shadow-2xl max-w-2xl mx-auto p-8 md:p-12 text-center" data-aos="zoom-in">
+                
+                <div id="quiz-step-1">
+                    <span class="text-green-600 font-bold uppercase">DESCUBRA SUA OFERTA PERSONALIZADA</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-4">Qual seu maior objetivo ao buscar o emagrecimento?</h2>
+                    <div class="mt-8 space-y-4">
+                        <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Melhorar minha saúde e energia</button>
+                        <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Aumentar minha autoestima</button>
+                        <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Vestir as roupas que eu gosto</button>
+                    </div>
+                </div>
+
+                <div id="quiz-step-2" class="hidden">
+                    <span class="text-green-600 font-bold uppercase">ESTAMOS QUASE LÁ...</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-4">Você já tentou outros métodos para emagrecer antes?</h2>
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Sim, vários e me frustrei</button>
+                        <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Não, esta é minha primeira vez</button>
+                    </div>
+                </div>
+
+                <div id="quiz-step-3" class="hidden">
+                    <span class="text-green-600 font-bold uppercase">ÚLTIMA PERGUNTA!</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-4">Você está pronto(a) para seguir um passo a passo simples e eficaz, sem dietas malucas?</h2>
+                    <div class="mt-8 space-y-4">
+                        <button data-next-step="quiz-calculating" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Sim, estou 100% comprometido(a)!</button>
+                    </div>
+                </div>
+
+                <div id="quiz-calculating" class="hidden">
+                     <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-4">Analisando suas respostas...</h2>
+                     <p class="text-slate-600 mt-2">Estamos preparando uma condição especial para você.</p>
+                     <div class="flex justify-center items-center h-32">
+                        <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-green-600"></div>
+                     </div>
+                </div>
+
+                <div id="quiz-result" class="hidden">
+                    <span class="text-yellow-500 font-bold uppercase">Parabéns! Vaga Reservada!</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-2">Você Desbloqueou 72% de Desconto!</h2>
+                    <p class="mt-4 text-slate-600 text-lg">Seu comprometimento garantiu o acesso ao Pacote Completo por um valor que não se repetirá:</p>
+                    
+                    <div class="text-left my-8 space-y-3 bg-slate-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> Guia Reset Metabólico Completo (Valor: R$97,00)</p>
+                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> <span class="bg-yellow-300 px-1 rounded">BÔNUS 1:</span> Ebook com 50 Receitas Fáceis (Valor: R$47,00)</p>
+                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> <span class="bg-yellow-300 px-1 rounded">BÔNUS 2:</span> Planilhas de Acompanhamento (Valor: R$27,00)</p>
+                        <p class="font-bold text-slate-800 flex items-center"><span class="text-green-500 mr-2">✔️</span> <span class="bg-yellow-300 px-1 rounded">BÔNUS 3:</span> Acesso à Comunidade VIP (Valor: Incalculável)</p>
+                    </div>
+
+                    <p class="text-lg text-slate-700">De <s class="text-red-500">R$171,00</s> por um pagamento <span class="font-bold">único e vitalício</span> de apenas:</p>
+                    <p class="text-6xl md:text-7xl font-black text-green-600 my-2">R$ 47,90</p>
+                    
+                    <div class="my-4 p-3 bg-red-100 border border-red-500 rounded-lg">
+                        <p class="text-red-600 font-semibold">Sua oferta expira em:</p>
+                        <div id="countdown-timer" class="text-3xl font-mono font-bold text-red-700">10:00</div>
+                    </div>
+                    
+                    <a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-lg w-full mt-2">
+                        PEGAR ACESSO COM 72% DE DESCONTO
+                    </a>
+
+                    <p class="mt-4 text-sm font-bold text-slate-600">Aviso: Esta oferta é única e válida apenas nesta página. Ao fechar ou atualizar, você perderá seu desconto.</p>
+                     
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-800 text-white text-center py-6 px-4" data-aos="fade-up">
+        <p>&copy; 2025 OAbismoVisual/ Reset Metabólico . Todos os direitos reservados.</p>
+        <p class="text-sm text-slate-400 mt-2 max-w-3xl mx-auto">Este produto se trata de um livro digital (ebook) e não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Consulte sempre um profissional da saúde antes de iniciar qualquer dieta ou programa de exercícios.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headline = document.getElementById('animated-headline');
+            if (headline) {
+                const text = headline.textContent.trim();
+                const words = text.split(' ');
+                
+                headline.innerHTML = ''; // Limpa o conteúdo original
+                
+                words.forEach((word, index) => {
+                    const wordSpan = document.createElement('span');
+                    wordSpan.className = 'word';
+                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : ''); // Adiciona espaço
+                    wordSpan.style.setProperty('--delay', `${index * 0.1}s`);
+                    headline.appendChild(wordSpan);
+                });
+            }
+        });
+    </script>
+    
+    <script>
+        const quizContainer = document.getElementById('quiz-container');
+        const quizSteps = quizContainer.querySelectorAll('[id^="quiz-step-"], [id^="quiz-calculating"], [id^="quiz-result"]');
+        const quizButtons = quizContainer.querySelectorAll('.quiz-button');
+        let countdownInterval;
+
+        function startCountdown(durationMinutes) {
+            const timerElement = document.getElementById('countdown-timer');
+            let timer = durationMinutes * 60;
+            
+            clearInterval(countdownInterval);
+
+            countdownInterval = setInterval(() => {
+                let minutes = parseInt(timer / 60, 10);
+                let seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerElement.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    timerElement.textContent = "Oferta Expirada!";
+                    const ctaButton = document.querySelector('#quiz-result .cta-button');
+                    if(ctaButton) {
+                        ctaButton.classList.add('opacity-50', 'pointer-events-none');
+                    }
+                }
+            }, 1000);
+        }
+
+        function showStep(stepIdToShow) {
+            quizSteps.forEach(step => {
+                step.id === stepIdToShow ? step.classList.remove('hidden') : step.classList.add('hidden');
+            });
+
+            if (stepIdToShow === 'quiz-calculating') {
+                setTimeout(() => showStep('quiz-result'), 2500);
+            }
+            
+            if (stepIdToShow === 'quiz-result') {
+                startCountdown(10);
+            }
+        }
+
+        quizButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const nextStepId = button.getAttribute('data-next-step');
+                if (nextStepId) {
+                    showStep(nextStepId);
+                }
+            });
+        });
+    </script>
+    
+    <script>
+        AOS.init({
+            offset: 120,
+            delay: 0,
+            duration: 800,
+            easing: 'ease',
+            once: true,
+            mirror: false,
+            anchorPlacement: 'top-bottom',
+        });
+    </script>
 </body>
 </html>
