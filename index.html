@@ -14,178 +14,50 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
-        .hero-video-container {
-            position: absolute;
+        .hero-video-container{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:-1}#hero-video{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}.glass-card{background:rgba(0,0,0,.3);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1)}#animated-headline .word{display:inline-block;opacity:0;transform:translateY(20px);animation:fadeInWord .6s cubic-bezier(.215,.61,.355,1) forwards;animation-delay:var(--delay)}@keyframes fadeInWord{to{opacity:1;transform:translateY(0)}}.cta-button{transition:all .3s ease-in-out;box-shadow:0 0 20px rgba(22,163,74,.7);animation:pulse-glow 2s infinite alternate}@keyframes pulse-glow{from{box-shadow:0 0 15px rgba(22,163,74,.6)}to{box-shadow:0 0 30px rgba(22,163,74,.8)}}.cta-button:hover{transform:translateY(-5px) scale(1.05);animation-play-state:paused;box-shadow:0 0 35px rgba(22,163,74,1)}.testimonial-card{background:linear-gradient(135deg,#1f2937,#374151)}.quiz-button{transition:all .2s ease-in-out}.quiz-button:hover{background-color:#047857;transform:scale(1.05)}.floating-purchase-popup{position:fixed;top:80px;right:20px;z-index:9999;background-color:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.15);border:1px solid #e2e8f0;opacity:0;transform:translateY(-20px);transition:opacity .5s ease-out,transform .5s ease-out;visibility:hidden;max-width:90%}.floating-purchase-popup.show{opacity:1;transform:translateY(0);visibility:visible}.popup-content{display:flex;align-items:center;padding:12px 16px}.popup-icon{width:24px;height:24px;color:#28a745;margin-right:12px;flex-shrink:0}.popup-message{font-size:14px;color:#333;margin:0}.popup-message strong{color:#000;font-weight:600}@media (max-width:640px){.floating-purchase-popup{left:10px;right:10px;top:70px}}#quiz-result{position:relative}#quiz-result.animate-surprise{animation:zoomInOffer .8s cubic-bezier(.25,1,.5,1) forwards}@keyframes zoomInOffer{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}.confetti-container{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:20}.confetti{position:absolute;top:50%;left:50%;width:10px;height:10px;background-color:var(--confetti-color);opacity:0;animation:confetti-fall 2.5s ease-out forwards;animation-delay:var(--delay);border-radius:50%}@keyframes confetti-fall{0%{opacity:1;transform:translate(0,0) scale(1.2)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(0)}}
+        .sticky-banner {
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
+            z-index: 10000;
+            background-color: #ef4444;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            animation: pulse-banner 2s infinite;
         }
-        #hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.6);
+        @keyframes pulse-banner {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-        .glass-card {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        #animated-headline .word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInWord 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
-            animation-delay: var(--delay);
-        }
-        @keyframes fadeInWord {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .cta-button {
+        #scarcity-counter {
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 0 20px rgba(22, 163, 74, 0.7);
-            animation: pulse-glow 2s infinite alternate;
+            display: inline-block;
         }
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            animation-play-state: paused;
-            box-shadow: 0 0 35px rgba(22, 163, 74, 1);
-        }
-        @keyframes pulse-glow {
-            from {
-                box-shadow: 0 0 15px rgba(22, 163, 74, 0.6);
-            }
-            to {
-                box-shadow: 0 0 30px rgba(22, 163, 74, 0.8);
-            }
-        }
-        .testimonial-card {
-            background: linear-gradient(135deg, #1f2937, #374151);
-        }
-        .quiz-button {
-            transition: all 0.2s ease-in-out;
-        }
-        .quiz-button:hover {
-            background-color: #047857;
-            transform: scale(1.05);
-        }
-        .floating-purchase-popup {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border: 1px solid #e2e8f0;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-            visibility: hidden;
-            max-width: 90%;
-        }
-        .floating-purchase-popup.show {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
-        }
-        .popup-content {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-        }
-        .popup-icon {
-            width: 24px;
-            height: 24px;
-            color: #28a745;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        .popup-message {
-            font-size: 14px;
-            color: #333;
-            margin: 0;
-        }
-        .popup-message strong {
-            color: #000;
-            font-weight: 600;
-        }
-        @media (max-width: 640px) {
-            .floating-purchase-popup {
-                left: 10px;
-                right: 10px;
-                top: 10px;
-            }
-        }
-        #quiz-result {
-            position: relative;
-        }
-        #quiz-result.animate-surprise {
-            animation: zoomInOffer 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        @keyframes zoomInOffer {
-            from {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        .confetti-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 20;
-        }
-        .confetti {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background-color: var(--confetti-color);
-            opacity: 0;
-            animation: confetti-fall 2.5s ease-out forwards;
-            animation-delay: var(--delay);
-            border-radius: 50%;
-        }
-        @keyframes confetti-fall {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1.2);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--x), var(--y)) scale(0);
-            }
+        #scarcity-counter.updated {
+            transform: scale(1.2);
+            color: #dc2626;
         }
     </style>
 </head>
 <body class="bg-slate-50">
 
+    <div class="sticky-banner">
+        ATENÇÃO: Sua condição especial de 72% de desconto expira nesta visita!
+    </div>
+
     <header class="relative text-white h-screen min-h-[700px] flex items-center justify-center">
-        <div class="hero-video-container">
-            <video id="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=2069&auto=format&fit=crop">
-                <source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-        </div>
+        <div class="hero-video-container"><video id="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=2069&auto=format&fit=crop"><source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4">Seu navegador não suporta vídeos HTML5.</video></div>
         <div class="container mx-auto px-6 text-center z-10">
             <div class="glass-card max-w-4xl mx-auto rounded-2xl p-8 md:p-12">
-                <span class="bg-green-600 text-white font-semibold py-1 px-4 rounded-full text-sm uppercase" data-aos="fade-in" data-aos-delay="1000">A jornada para o seu melhor corpo começa agora</span>
+                
+                <span class="inline-flex items-center bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-4 rounded-full text-sm uppercase shadow-lg shadow-green-500/30" data-aos="fade-in" data-aos-delay="1000">
+                    <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10.868 2.884c.321.64.321 1.393 0 2.034l-1.334 2.667a1.75 1.75 0 01-1.498.93h-2.12a1.75 1.75 0 01-1.498-.93L3.132 4.918a1.75 1.75 0 010-2.034L4.466.217a1.75 1.75 0 011.498-.93h4.156a1.75 1.75 0 011.498.93l1.334 2.667zM16.868 8.884c.321.64.321 1.393 0 2.034l-1.334 2.667a1.75 1.75 0 01-1.498.93h-2.12a1.75 1.75 0 01-1.498-.93L9.132 10.918a1.75 1.75 0 010-2.034l1.334-2.667a1.75 1.75 0 011.498-.93h4.156a1.75 1.75 0 011.498.93l1.334 2.667z" clip-rule="evenodd" />
+                    </svg>
+                    A jornada para o seu melhor corpo começa agora
+                </span>
+
                 <h1 id="animated-headline" class="text-4xl md:text-6xl font-black mt-6 leading-tight text-shadow-lg">Reassuma o Controle do Seu Corpo. Para Sempre.</h1>
                 <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-aos="fade-in" data-aos-delay="1200">Esqueça as regras do emagrecimento convencional. Existe um método mais inteligente para remodelar seu corpo, que não envolve contar calorias ou passar horas na academia. Ele começa ao desvendar os sinais que seu corpo já te dá.</p>
                 <div class="mt-10" data-aos="zoom-in" data-aos-delay="1500">
@@ -197,38 +69,14 @@
     </header>
 
     <section class="bg-slate-100 py-16">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-slate-800" data-aos="fade-down">A Luta Contra a Balança Parece Interminável?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><p class="text-lg text-slate-600">O famoso "efeito sanfona" te persegue, não importa o que você faça?</p></div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><p class="text-lg text-slate-600">Você se sente perdido(a), sem um plano claro do que comer ou como se exercitar?</p></div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg></div><p class="text-lg text-slate-600">Já investiu em pílulas e métodos "milagrosos" que só levaram sua esperança (e dinheiro)?</p></div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div><p class="text-lg text-slate-600">A imagem no espelho te incomoda, afetando sua autoestima e confiança?</p></div>
-            </div>
-            <p class="text-center mt-12 text-xl font-semibold text-green-700 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">Se você se identificou, entenda: a culpa nunca foi sua. Você esteve jogando o jogo com as regras erradas. É hora de conhecer o método que realmente funciona.</p>
-        </div>
+        <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center mb-12 text-slate-800" data-aos="fade-down">A Luta Contra a Balança Parece Interminável?</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><p class="text-lg text-slate-600">O famoso "efeito sanfona" te persegue, não importa o que você faça?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><p class="text-lg text-slate-600">Você se sente perdido(a), sem um plano claro do que comer ou como se exercitar?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg></div><p class="text-lg text-slate-600">Já investiu em pílulas e métodos "milagrosos" que só levaram sua esperança (e dinheiro)?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400"><div class="bg-white p-5 rounded-full shadow-lg mb-4"><svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div><p class="text-lg text-slate-600">A imagem no espelho te incomoda, afetando sua autoestima e confiança?</p></div></div><p class="text-center mt-12 text-xl font-semibold text-green-700 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">Se você se identificou, entenda: a culpa nunca foi sua. Você esteve jogando o jogo com as regras erradas. É hora de conhecer o método que realmente funciona.</p></div>
     </section>
 
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-down">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">Dentro do Guia: A Estratégia Definitiva</h2>
-                <p class="text-lg text-slate-600 mt-4 max-w-3xl mx-auto">O que você vai descobrir não é uma dieta, mas um sistema. Um conhecimento que, uma vez aprendido, te dá o controle total sobre seu corpo e sua autoestima.</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1512485800893-b08ec1ea59b1?q=80&w=1974&auto=format&fit=crop" alt="Mulher feliz preparando uma salada" class="rounded-lg shadow-2xl w-full h-auto"></div>
-                <div class="space-y-6">
-                    <div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="200"><div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">O Código da Alimentação Flexível</h3><p class="text-slate-600 mt-1">Cansado de salada e frango grelhado? Aqui você vai descobrir o protocolo para incluir seus pratos favoritos na rotina — sem culpa e sem sabotar seus resultados. Aprenda a reativar os "sensores de saciedade" do seu corpo para que a fome simplesmente desapareça.</p></div></div>
-                    <div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="300"><div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">Ativadores Metabólicos de 15 Minutos</h3><p class="text-slate-600 mt-1">Esqueça os treinos longos e exaustivos. Você terá acesso a rotinas curtas e intensas que transformam seu corpo em uma máquina de queimar gordura por até 24 horas *após* o exercício. É o máximo de resultado no mínimo de tempo.</p></div></div>
-                    <div class="flex items-start space-x-4 p-4 border-2 border-green-500 rounded-lg bg-green-50" data-aos="fade-left" data-aos-delay="400"><div class="flex-shrink-0 bg-green-200 text-green-800 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">Protocolo Rosto Definido</h3><p class="text-slate-600 mt-1">Este é o nosso segredo mais bem guardado. Uma série de técnicas e estratégias de "Drenagem Reversa" para eliminar o inchaço facial, reduzir a papada e finalmente revelar a estrutura óssea e o contorno do seu rosto. A diferença no espelho e nas fotos é visível em dias.</p></div></div>
-                    <div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="500"><div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">O Mindset Inabalável</h3><p class="text-slate-600 mt-1">De nada adianta um bom plano sem a mente certa. Você vai aprender a "desprogramar" a ansiedade e a compulsão na raiz do problema e a usar gatilhos mentais para se manter motivado, mesmo naqueles dias em que tudo o que você quer é desistir.</p></div></div>
-                </div>
-            </div>
-        </div>
+        <div class="container mx-auto px-6"><div class="text-center mb-16" data-aos="fade-down"><h2 class="text-3xl md:text-4xl font-bold text-slate-800">Dentro do Guia: A Estratégia Definitiva</h2><p class="text-lg text-slate-600 mt-4 max-w-3xl mx-auto">O que você vai descobrir não é uma dieta, mas um sistema. Um conhecimento que, uma vez aprendido, te dá o controle total sobre seu corpo e sua autoestima.</p></div><div class="grid md:grid-cols-2 gap-12 items-center"><div data-aos="fade-right" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1512485800893-b08ec1ea59b1?q=80&w=1974&auto=format&fit=crop" alt="Mulher feliz preparando uma salada" class="rounded-lg shadow-2xl w-full h-auto"></div><div class="space-y-6"><div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="200"><div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">O Código da Alimentação Flexível</h3><p class="text-slate-600 mt-1">Cansado de salada e frango grelhado? Aqui você vai descobrir o protocolo para incluir seus pratos favoritos na rotina — sem culpa e sem sabotar seus resultados. Aprenda a reativar os "sensores de saciedade" do seu corpo para que a fome simplesmente desapareça.</p></div></div><div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="300"><div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">Ativadores Metabólicos de 15 Minutos</h3><p class="text-slate-600 mt-1">Esqueça os treinos longos e exaustivos. Você terá acesso a rotinas curtas e intensas que transformam seu corpo em uma máquina de queimar gordura por até 24 horas *após* o exercício. É o máximo de resultado no mínimo de tempo.</p></div></div><div class="flex items-start space-x-4 p-4 border-2 border-green-500 rounded-lg bg-green-50" data-aos="fade-left" data-aos-delay="400"><div class="flex-shrink-0 bg-green-200 text-green-800 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">Protocolo Rosto Definido</h3><p class="text-slate-600 mt-1">Este é o nosso segredo mais bem guardado. Uma série de técnicas e estratégias de "Drenagem Reversa" para eliminar o inchaço facial, reduzir a papada e finalmente revelar a estrutura óssea e o contorno do seu rosto. A diferença no espelho e nas fotos é visível em dias.</p></div></div><div class="flex items-start space-x-4" data-aos="fade-left" data-aos-delay="500"><div class="flex-shrink-0 bg-green-100 text-green-700 p-3 rounded-full"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M7.72 1.94a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L11.44 8 7.72 4.28a.75.75 0 010-1.06z"></path></svg></div><div><h3 class="text-xl font-bold text-slate-800">O Mindset Inabalável</h3><p class="text-slate-600 mt-1">De nada adianta um bom plano sem a mente certa. Você vai aprender a "desprogramar" a ansiedade e a compulsão na raiz do problema e a usar gatilhos mentais para se manter motivado, mesmo naqueles dias em que tudo o que você quer é desistir.</p></div></div></div></div></div>
     </section>
 
-    <section class="bg-slate-800 py-20">
-        <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="fade-down">Milhares de Vidas Já Foram Transformadas</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="100"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Carla Mendes</p><p class="text-sm text-slate-300">Perdeu 12kg</p></div></div><p class="text-slate-200">"Eu já tinha tentado de tudo. Esse guia foi a virada de chave! É tão fácil de seguir, e pela primeira vez eu emagreci sem sofrer. Me sinto outra mulher!"</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg lg:scale-105" data-aos="zoom-in-up" data-aos-delay="200"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Ricardo Alves</p><p class="text-sm text-slate-300">Perdeu 18kg</p></div></div><p class="text-slate-200">"O melhor investimento que fiz na minha saúde. Perdi a barriga de cerveja e ganhei uma energia que não sentia há anos. Recomendo de olhos fechados."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="300"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Juliana Ferreira</p><p class="text-sm text-slate-300">Perdeu 8kg</p></div></div><p class="text-slate-200">"Sempre tive vergonha do meu rosto redondo e da papada. O capítulo sobre isso vale ouro! Em poucas semanas a diferença no espelho foi gritante."</p></div></div></div>
+    <section class="bg-slate-800 py-20"><div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="fade-down">Milhares de Vidas Já Foram Transformadas</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="100"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Carla Mendes</p><p class="text-sm text-slate-300">Perdeu 12kg</p></div></div><p class="text-slate-200">"Eu já tinha tentado de tudo. Esse guia foi a virada de chave! É tão fácil de seguir, e pela primeira vez eu emagreci sem sofrer. Me sinto outra mulher!"</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg lg:scale-105" data-aos="zoom-in-up" data-aos-delay="200"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Ricardo Alves</p><p class="text-sm text-slate-300">Perdeu 18kg</p></div></div><p class="text-slate-200">"O melhor investimento que fiz na minha saúde. Perdi a barriga de cerveja e ganhei uma energia que não sentia há anos. Recomendo de olhos fechados."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="300"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Juliana Ferreira</p><p class="text-sm text-slate-300">Perdeu 8kg</p></div></div><p class="text-slate-200">"Sempre tive vergonha do meu rosto redondo e da papada. O capítulo sobre isso vale ouro! Em poucas semanas a diferença no espelho foi gritante."</p></div></div></div>
     </section>
 
     <section id="preco" class="bg-slate-100 py-20">
@@ -239,8 +87,20 @@
                 <div id="quiz-step-3" class="hidden"><span class="text-green-600 font-bold uppercase">ÚLTIMA PERGUNTA!</span><h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-4">Você está pronto(a) para seguir um passo a passo simples e eficaz, sem dietas malucas?</h2><div class="mt-8 space-y-4"><button data-next-step="quiz-calculating" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Sim, estou 100% comprometido(a)!</button></div></div>
                 <div id="quiz-calculating" class="hidden"><h2 class="text-2xl md:text-3xl font-bold text-slate-800 mt-4">Analisando suas respostas...</h2><p class="text-slate-600 mt-2">Estamos preparando uma condição especial para você.</p><div class="flex justify-center items-center h-32"><div class="animate-spin rounded-full h-16 w-16 border-b-4 border-green-600"></div></div></div>
                 <div id="quiz-result" class="hidden">
-                    <span class="text-yellow-500 font-bold uppercase">Parabéns! Vaga Reservada!</span><h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-2">Você Desbloqueou 72% de Desconto!</h2><p class="mt-4 text-slate-600 text-lg">Seu comprometimento garantiu o acesso ao Pacote Completo por um valor que não se repetirá:</p><div class="text-left my-8 space-y-5 bg-slate-50 border-l-4 border-green-500 p-6 rounded-r-lg"><div class="flex items-start"><span class="text-green-500 mr-3 text-xl flex-shrink-0 leading-tight">✔️</span><p class="font-bold text-slate-800"><strong class="text-green-600">Coma o que Você Ama Sem Culpa:</strong> Aprenda o segredo para incluir pizza e seus pratos favoritos na dieta e AINDA ver o número na balança despencar.</p></div><div class="flex items-start"><span class="text-green-500 mr-3 text-xl flex-shrink-0 leading-tight">✔️</span><p class="font-bold text-slate-800"><strong class="text-green-600">Resultados Visíveis na Primeira Semana:</strong> Siga um plano de 7 dias à prova de falhas, projetado para desinchar seu corpo e fazer você se sentir mais leve imediatamente.</p></div><div class="flex items-start"><span class="text-green-500 mr-3 text-xl flex-shrink-0 leading-tight">✔️</span><p class="font-bold text-slate-800"><strong class="text-green-600">Um Rosto Mais Fino e Definido:</strong> Finalmente revele o contorno do seu rosto e elimine a papada com um método que te deixará irreconhecível nas selfies.</p></div></div><p class="text-lg text-slate-700">De <s class="text-red-500">R$171,00</s> por um pagamento <span class="font-bold">único e vitalício</span> de apenas:</p><p class="text-6xl md:text-7xl font-black text-green-600 my-2">R$ 47,90</p><div class="my-4 p-3 bg-red-100 border border-red-500 rounded-lg"><p class="text-red-600 font-semibold">Sua oferta expira em:</p><div id="countdown-timer" class="text-3xl font-mono font-bold text-red-700">10:00</div></div><div class="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800" role="alert"><p class="font-bold uppercase">Atenção: Vagas Quase Esgotadas!</p><p>Para garantir a qualidade do suporte, as vagas com 72% de desconto são <strong>estritamente limitadas</strong>. Restam apenas <span class="text-red-600 font-black animate-pulse">7</span> vagas disponíveis.</p></div><a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-lg w-full mt-2">GARANTIR MINHA VAGA AGORA MESMO</a><p class="mt-4 text-sm font-bold text-slate-600">Aviso: Esta oferta é única e válida apenas nesta página. Ao fechar ou atualizar, você perderá seu desconto.</p>
                     <div class="confetti-container"></div>
+                    <span class="text-yellow-500 font-bold uppercase">Parabéns! Vaga Reservada!</span><h2 class="text-3xl md:text-4xl font-black text-slate-800 mt-2">Você Desbloqueou Seu Pacote Completo!</h2>
+                    <div class="text-left bg-slate-50 border border-slate-200 rounded-lg p-6 my-8"><p class="font-bold text-slate-800 text-center mb-4">Ao garantir seu acesso hoje, você recebe:</p><ul class="space-y-3"><li class="flex items-start"><span class="text-green-500 mr-3">✔️</span><div><span class="font-bold">O Guia "Reset Metabólico"</span><span class="text-slate-500 line-through ml-2">R$171,00</span></div></li><li class="flex items-start"><span class="text-green-500 mr-3">✔️</span><div><span class="font-bold text-green-700">BÔNUS 1:</span> Guia de Receitas "Queima-Gordura" de 5 Minutos<span class="text-slate-500 line-through ml-2">R$47,00</span></div></li><li class="flex items-start"><span class="text-green-500 mr-3">✔️</span><div><span class="font-bold text-green-700">BÔNUS 2:</span> Checklist Anti-Autossabotagem<span class="text-slate-500 line-through ml-2">R$29,00</span></div></li></ul><div class="text-center mt-4 pt-4 border-t"><p class="text-slate-600">Valor Total do Pacote: <span class="line-through">R$247,00</span></p><p class="font-bold text-lg text-slate-800">Seu Acesso Hoje por Apenas:</p></div></div>
+                    <p class="text-6xl md:text-7xl font-black text-green-600 my-2">R$ 47,90</p>
+                    <div class="my-4 p-3 bg-red-100 border border-red-500 rounded-lg"><p class="text-red-600 font-semibold">Sua oferta expira em:</p><div id="countdown-timer" class="text-3xl font-mono font-bold text-red-700">10:00</div></div>
+                    <div class="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800" role="alert"><p class="font-bold uppercase">Atenção: Vagas Quase Esgotadas!</p><p>Para garantir a qualidade, as vagas com este desconto são <strong>limitadas</strong>. Restam apenas <span id="scarcity-counter" class="text-red-600 font-black text-2xl">11</span> vagas.</p></div>
+                    <a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-lg w-full mt-2">GARANTIR MINHA VAGA AGORA MESMO</a>
+                    <div class="mt-8 flex items-center justify-center p-4 bg-slate-100 rounded-lg border-2 border-dashed border-slate-300">
+                        <svg class="w-16 h-16 text-green-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 20.944A12.02 12.02 0 0012 22a12.02 12.02 0 009-1.056 11.955 11.955 0 002.618-3.04A11.955 11.955 0 0112 2.944z"></path></svg>
+                        <div class="text-left">
+                            <h4 class="font-bold text-lg text-green-700">VOCÊ NÃO TEM NADA A PERDER, SÓ GORDURA.</h4>
+                            <p class="text-sm text-slate-600 mt-1">É isso mesmo. Você tem 7 dias completos para aplicar o método. Se a balança não começar a descer, se seu rosto não começar a desinchar, ou se você simplesmente achar que não é para você, me envie um e-mail. Eu devolvo cada centavo, sem ressentimentos e sem burocracia. O risco de não funcionar é 100% meu.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -251,15 +111,8 @@
         <p class="text-sm text-slate-400 mt-2 max-w-3xl mx-auto">Este produto se trata de um livro digital (ebook) e não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Consulte sempre um profissional da saúde antes de iniciar qualquer dieta ou programa de exercícios.</p>
     </footer>
 
-    <div id="social-proof-popup" class="floating-purchase-popup">
-        <div class="popup-content">
-            <svg xmlns="http://www.w3.org/2000/svg" class="popup-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-            <p id="popup-message" class="popup-message"></p>
-        </div>
-    </div>
-    <audio id="notification-sound" preload="auto">
-      <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c649d2263.mp3" type="audio/mpeg">
-    </audio>
+    <div id="social-proof-popup" class="floating-purchase-popup"><div class="popup-content"><svg xmlns="http://www.w3.org/2000/svg" class="popup-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg><p id="popup-message" class="popup-message"></p></div></div>
+    <audio id="notification-sound" preload="auto"><source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c649d2263.mp3" type="audio/mpeg"></audio>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
@@ -283,14 +136,14 @@
 
         // --- LÓGICA DO QUIZ E DA OFERTA ---
         const quizContainer = document.getElementById('quiz-container');
-        if(quizContainer) {
+        if (quizContainer) {
             const quizSteps = quizContainer.querySelectorAll('[id^="quiz-step-"], [id^="quiz-calculating"], [id^="quiz-result"]');
             const quizButtons = quizContainer.querySelectorAll('.quiz-button');
             let countdownInterval;
 
             function startCountdown(durationMinutes) {
                 const timerElement = document.getElementById('countdown-timer');
-                if(!timerElement) return;
+                if (!timerElement) return;
                 let timer = durationMinutes * 60;
                 clearInterval(countdownInterval);
                 countdownInterval = setInterval(() => {
@@ -303,7 +156,7 @@
                         clearInterval(countdownInterval);
                         timerElement.textContent = "Oferta Expirada!";
                         const ctaButton = document.querySelector('#quiz-result .cta-button');
-                        if(ctaButton) ctaButton.classList.add('opacity-50', 'pointer-events-none');
+                        if (ctaButton) ctaButton.classList.add('opacity-50', 'pointer-events-none');
                     }
                 }, 1000);
             }
@@ -335,14 +188,12 @@
                 } else if (stepIdToShow === 'quiz-result') {
                     const resultContainer = document.getElementById('quiz-result');
                     const confettiContainer = resultContainer.querySelector('.confetti-container');
-                    
                     setTimeout(() => {
                         resultContainer.classList.add('animate-surprise');
                         if (confettiContainer) {
                             createConfetti(confettiContainer);
                         }
                     }, 50);
-
                     startCountdown(10);
                 }
             }
@@ -355,9 +206,9 @@
             });
         }
 
-        // --- LÓGICA DO POP-UP DE PROVA SOCIAL ---
+        // --- LÓGICA DO POP-UP E ESCASSEZ DINÂMICA ---
         (function() {
-            const nomes = ["Maria S.","João P.","Ana C.","Carlos A.","Fernanda L.","Lucas M.","Juliana R.","Pedro H.","Camila F.","Marcos V.","Beatriz G.","Rafael B."];
+            const nomes = ["Maria S.","João P.","Ana C.","Carlos A.","Fernanda L.","Lucas M.","Juliana R.","Pedro H."];
             const mensagens = ["acabou de comprar o Guia Definitivo!","garantiu seu acesso ao Guia!"];
             const tempoVisivel = 5000;
             const tempoMinimoIntervalo = 4000;
@@ -366,6 +217,7 @@
             const popupElement = document.getElementById('social-proof-popup');
             const messageElement = document.getElementById('popup-message');
             const audioElement = document.getElementById('notification-sound');
+            const scarcityElement = document.getElementById('scarcity-counter');
 
             if (!popupElement || !messageElement || !audioElement) { return; }
 
@@ -385,8 +237,17 @@
                 messageElement.innerHTML = `<strong>${nomeAleatorio}</strong> ${mensagemAleatoria}`;
                 popupElement.classList.add('show');
                 audioElement.currentTime = 0;
-                const playPromise = audioElement.play();
-                if (playPromise !== undefined) { playPromise.catch(error => {}); }
+                audioElement.play().catch(error => {});
+                
+                if(scarcityElement) {
+                    let vagasAtuais = parseInt(scarcityElement.textContent);
+                    if (vagasAtuais > 4) {
+                        scarcityElement.textContent = vagasAtuais - 1;
+                        scarcityElement.classList.add('updated');
+                        setTimeout(() => { scarcityElement.classList.remove('updated'); }, 500);
+                    }
+                }
+
                 setTimeout(() => { popupElement.classList.remove('show'); }, tempoVisivel);
             };
 
