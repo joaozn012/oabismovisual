@@ -76,6 +76,56 @@
             background-color: #047857;
             transform: scale(1.05);
         }
+
+        /* --- CSS DO POP-UP DE PROVA SOCIAL (POSIÇÃO SUPERIOR) --- */
+        .floating-purchase-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e2e8f0;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            visibility: hidden;
+            max-width: 90%;
+        }
+        .floating-purchase-popup.show {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+        .popup-content {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+        }
+        .popup-icon {
+            width: 24px;
+            height: 24px;
+            color: #28a745;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .popup-message {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+        }
+        .popup-message strong {
+            color: #000;
+            font-weight: 600;
+        }
+        @media (max-width: 640px) {
+            .floating-purchase-popup {
+                left: 10px;
+                right: 10px;
+                top: 10px;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-50">
@@ -296,9 +346,14 @@
                         <p class="text-red-600 font-semibold">Sua oferta expira em:</p>
                         <div id="countdown-timer" class="text-3xl font-mono font-bold text-red-700">10:00</div>
                     </div>
+
+                    <div class="my-6 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800" role="alert">
+                        <p class="font-bold uppercase">Atenção: Vagas Quase Esgotadas!</p>
+                        <p>Para garantir a qualidade do suporte, as vagas com 72% de desconto são <strong>estritamente limitadas</strong>. Restam apenas <span class="text-red-600 font-black animate-pulse">7</span> vagas disponíveis.</p>
+                    </div>
                     
                     <a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-lg w-full mt-2">
-                        PEGAR ACESSO COM 72% DE DESCONTO
+                        GARANTIR MINHA VAGA AGORA MESMO
                     </a>
 
                     <p class="mt-4 text-sm font-bold text-slate-600">Aviso: Esta oferta é única e válida apenas nesta página. Ao fechar ou atualizar, você perderá seu desconto.</p>
@@ -313,29 +368,41 @@
         <p class="text-sm text-slate-400 mt-2 max-w-3xl mx-auto">Este produto se trata de um livro digital (ebook) e não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Consulte sempre um profissional da saúde antes de iniciar qualquer dieta ou programa de exercícios.</p>
     </footer>
 
+    <div id="social-proof-popup" class="floating-purchase-popup">
+        <div class="popup-content">
+            <svg xmlns="http://www.w3.org/2000/svg" class="popup-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            </svg>
+            <p id="popup-message" class="popup-message"></p>
+        </div>
+    </div>
+
+    <audio id="notification-sound" preload="auto">
+      <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c649d2263.mp3" type="audio/mpeg">
+    </audio>
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <script>
+        // Script da Animação do Título
         document.addEventListener('DOMContentLoaded', () => {
             const headline = document.getElementById('animated-headline');
             if (headline) {
                 const text = headline.textContent.trim();
                 const words = text.split(' ');
-                
-                headline.innerHTML = ''; // Limpa o conteúdo original
-                
+                headline.innerHTML = ''; 
                 words.forEach((word, index) => {
                     const wordSpan = document.createElement('span');
                     wordSpan.className = 'word';
-                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : ''); // Adiciona espaço
+                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : ''); 
                     wordSpan.style.setProperty('--delay', `${index * 0.1}s`);
                     headline.appendChild(wordSpan);
                 });
             }
         });
     </script>
-    
     <script>
+        // Script do Quiz
         const quizContainer = document.getElementById('quiz-container');
         const quizSteps = quizContainer.querySelectorAll('[id^="quiz-step-"], [id^="quiz-calculating"], [id^="quiz-result"]');
         const quizButtons = quizContainer.querySelectorAll('.quiz-button');
@@ -344,25 +411,18 @@
         function startCountdown(durationMinutes) {
             const timerElement = document.getElementById('countdown-timer');
             let timer = durationMinutes * 60;
-            
             clearInterval(countdownInterval);
-
             countdownInterval = setInterval(() => {
                 let minutes = parseInt(timer / 60, 10);
                 let seconds = parseInt(timer % 60, 10);
-
                 minutes = minutes < 10 ? "0" + minutes : minutes;
                 seconds = seconds < 10 ? "0" + seconds : seconds;
-
                 timerElement.textContent = minutes + ":" + seconds;
-
                 if (--timer < 0) {
                     clearInterval(countdownInterval);
                     timerElement.textContent = "Oferta Expirada!";
                     const ctaButton = document.querySelector('#quiz-result .cta-button');
-                    if(ctaButton) {
-                        ctaButton.classList.add('opacity-50', 'pointer-events-none');
-                    }
+                    if(ctaButton) ctaButton.classList.add('opacity-50', 'pointer-events-none');
                 }
             }, 1000);
         }
@@ -371,27 +431,19 @@
             quizSteps.forEach(step => {
                 step.id === stepIdToShow ? step.classList.remove('hidden') : step.classList.add('hidden');
             });
-
-            if (stepIdToShow === 'quiz-calculating') {
-                setTimeout(() => showStep('quiz-result'), 2500);
-            }
-            
-            if (stepIdToShow === 'quiz-result') {
-                startCountdown(10);
-            }
+            if (stepIdToShow === 'quiz-calculating') setTimeout(() => showStep('quiz-result'), 2500);
+            if (stepIdToShow === 'quiz-result') startCountdown(10);
         }
 
         quizButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const nextStepId = button.getAttribute('data-next-step');
-                if (nextStepId) {
-                    showStep(nextStepId);
-                }
+                if (nextStepId) showStep(nextStepId);
             });
         });
     </script>
-    
     <script>
+        // Script de Iniciação do AOS
         AOS.init({
             offset: 120,
             delay: 0,
@@ -401,6 +453,65 @@
             mirror: false,
             anchorPlacement: 'top-bottom',
         });
+    </script>
+
+    <script>
+    (function() {
+        // --- CONFIGURAÇÕES DE TEMPO (Valores em milissegundos) ---
+        const nomes = ["Maria S.","João P.","Ana C.","Carlos A.","Fernanda L.","Lucas M.","Juliana R.","Pedro H.","Camila F.","Marcos V.","Beatriz G.","Rafael B.","Larissa T.","Gabriel N."];
+        const mensagens = ["acabou de comprar o Guia Definitivo!","garantiu seu acesso ao Guia Definitivo!","acabou de se inscrever no Guia!","também comprou o Guia Definitivo!",];
+        const tempoVisivel = 5000; // Pop-up fica visível por 5 segundos
+        
+        // --- TEMPOS ALTERADOS CONFORME SOLICITADO ---
+        const tempoMinimoIntervalo = 4000; // Mínimo 4 segundos
+        const tempoMaximoIntervalo = 4000; // Máximo 4 segundos
+        const delayInicial = 4000; // Primeiro pop-up aparece em 4 segundos
+
+        const popupElement = document.getElementById('social-proof-popup');
+        const messageElement = document.getElementById('popup-message');
+        const audioElement = document.getElementById('notification-sound');
+
+        if (!popupElement || !messageElement || !audioElement) {
+            console.error("Erro: Um dos elementos essenciais do pop-up (HTML ou áudio) não foi encontrado.");
+            return;
+        }
+
+        function unlockAudio() {
+            audioElement.play().catch(() => {});
+            audioElement.pause();
+            audioElement.currentTime = 0;
+            document.removeEventListener('click', unlockAudio);
+            document.removeEventListener('touchstart', unlockAudio);
+        }
+        document.addEventListener('click', unlockAudio);
+        document.addEventListener('touchstart', unlockAudio);
+
+        const mostrarPopup = () => {
+            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+            const mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+            messageElement.innerHTML = `<strong>${nomeAleatorio}</strong> ${mensagemAleatoria}`;
+            popupElement.classList.add('show');
+
+            audioElement.currentTime = 0;
+            const playPromise = audioElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {});
+            }
+
+            setTimeout(() => {
+                popupElement.classList.remove('show');
+            }, tempoVisivel);
+        };
+
+        const runPopupCycle = () => {
+            mostrarPopup();
+            const proximoIntervalo = Math.floor(Math.random() * (tempoMaximoIntervalo - tempoMinimoIntervalo + 1)) + tempoMinimoIntervalo;
+            setTimeout(runPopupCycle, proximoIntervalo);
+        };
+
+        setTimeout(runPopupCycle, delayInicial);
+
+    })();
     </script>
 </body>
 </html>
