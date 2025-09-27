@@ -76,8 +76,6 @@
             background-color: #047857;
             transform: scale(1.05);
         }
-
-        /* --- CSS DO POP-UP DE PROVA SOCIAL (POSIÇÃO SUPERIOR) --- */
         .floating-purchase-popup {
             position: fixed;
             top: 20px;
@@ -126,10 +124,8 @@
                 top: 10px;
             }
         }
-
-        /* --- ANIMAÇÕES PARA A OFERTA DESBLOQUEADA --- */
         #quiz-result {
-            position: relative; /* Essencial para o posicionamento dos confetes */
+            position: relative;
         }
         #quiz-result.animate-surprise {
             animation: zoomInOffer 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -152,7 +148,7 @@
             height: 100%;
             pointer-events: none;
             overflow: hidden;
-            z-index: 20; /* Garante que os confetes fiquem por cima */
+            z-index: 20;
         }
         .confetti {
             position: absolute;
@@ -266,127 +262,145 @@
     </audio>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const headline = document.getElementById('animated-headline');
-            if (headline) {
-                const text = headline.textContent.trim();
-                const words = text.split(' ');
-                headline.innerHTML = ''; 
-                words.forEach((word, index) => {
-                    const wordSpan = document.createElement('span');
-                    wordSpan.className = 'word';
-                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : ''); 
-                    wordSpan.style.setProperty('--delay', `${index * 0.1}s`);
-                    headline.appendChild(wordSpan);
-                });
-            }
-        });
-    </script>
-    <script>
-        // --- SCRIPT DO QUIZ COM ANIMAÇÃO CORRIGIDA ---
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- LÓGICA DA ANIMAÇÃO DO TÍTULO ---
+        const headline = document.getElementById('animated-headline');
+        if (headline) {
+            const text = headline.textContent.trim();
+            const words = text.split(' ');
+            headline.innerHTML = '';
+            words.forEach((word, index) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word';
+                wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : '');
+                wordSpan.style.setProperty('--delay', `${index * 0.1}s`);
+                headline.appendChild(wordSpan);
+            });
+        }
+
+        // --- LÓGICA DO QUIZ E DA OFERTA ---
         const quizContainer = document.getElementById('quiz-container');
-        const quizSteps = quizContainer.querySelectorAll('[id^="quiz-step-"], [id^="quiz-calculating"], [id^="quiz-result"]');
-        const quizButtons = quizContainer.querySelectorAll('.quiz-button');
-        let countdownInterval;
+        if(quizContainer) {
+            const quizSteps = quizContainer.querySelectorAll('[id^="quiz-step-"], [id^="quiz-calculating"], [id^="quiz-result"]');
+            const quizButtons = quizContainer.querySelectorAll('.quiz-button');
+            let countdownInterval;
 
-        function startCountdown(durationMinutes) {
-            const timerElement = document.getElementById('countdown-timer');
-            let timer = durationMinutes * 60;
-            clearInterval(countdownInterval);
-            countdownInterval = setInterval(() => {
-                let minutes = parseInt(timer / 60, 10);
-                let seconds = parseInt(timer % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                timerElement.textContent = minutes + ":" + seconds;
-                if (--timer < 0) {
-                    clearInterval(countdownInterval);
-                    timerElement.textContent = "Oferta Expirada!";
-                    const ctaButton = document.querySelector('#quiz-result .cta-button');
-                    if(ctaButton) ctaButton.classList.add('opacity-50', 'pointer-events-none');
-                }
-            }, 1000);
-        }
-
-        function createConfetti(container) {
-            const colors = ['#22c55e', '#facc15', '#10b981', '#f97316', '#ffffff'];
-            const numConfetti = 40;
-            for (let i = 0; i < numConfetti; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                const x = (Math.random() - 0.5) * 800; // Dispersão horizontal
-                const y = (Math.random() - 0.5) * 800; // Dispersão vertical
-                const delay = Math.random() * 0.5;
-                confetti.style.setProperty('--confetti-color', colors[Math.floor(Math.random() * colors.length)]);
-                confetti.style.setProperty('--x', `${x}px`);
-                confetti.style.setProperty('--y', `${y}px`);
-                confetti.style.setProperty('--delay', `${delay}s`);
-                container.appendChild(confetti);
-                confetti.addEventListener('animationend', () => { confetti.remove(); });
-            }
-        }
-
-        function showStep(stepIdToShow) {
-            quizSteps.forEach(step => {
-                step.id === stepIdToShow ? step.classList.remove('hidden') : step.classList.add('hidden');
-            });
-
-            if (stepIdToShow === 'quiz-calculating') {
-                setTimeout(() => showStep('quiz-result'), 2500);
-            } else if (stepIdToShow === 'quiz-result') {
-                const resultContainer = document.getElementById('quiz-result');
-                const confettiContainer = resultContainer.querySelector('.confetti-container');
-                
-                // CORREÇÃO: Adiciona uma pequena pausa para o navegador renderizar o elemento antes de animar
-                setTimeout(() => {
-                    resultContainer.classList.add('animate-surprise');
-                    if (confettiContainer) {
-                        createConfetti(confettiContainer);
+            function startCountdown(durationMinutes) {
+                const timerElement = document.getElementById('countdown-timer');
+                if(!timerElement) return;
+                let timer = durationMinutes * 60;
+                clearInterval(countdownInterval);
+                countdownInterval = setInterval(() => {
+                    let minutes = parseInt(timer / 60, 10);
+                    let seconds = parseInt(timer % 60, 10);
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+                    timerElement.textContent = minutes + ":" + seconds;
+                    if (--timer < 0) {
+                        clearInterval(countdownInterval);
+                        timerElement.textContent = "Oferta Expirada!";
+                        const ctaButton = document.querySelector('#quiz-result .cta-button');
+                        if(ctaButton) ctaButton.classList.add('opacity-50', 'pointer-events-none');
                     }
-                }, 50); // 50ms de delay é o suficiente
-
-                startCountdown(10);
+                }, 1000);
             }
+
+            function createConfetti(container) {
+                const colors = ['#22c55e', '#facc15', '#10b981', '#f97316', '#ffffff'];
+                const numConfetti = 40;
+                for (let i = 0; i < numConfetti; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    const x = (Math.random() - 0.5) * 800;
+                    const y = (Math.random() - 0.5) * 800;
+                    const delay = Math.random() * 0.5;
+                    confetti.style.setProperty('--confetti-color', colors[Math.floor(Math.random() * colors.length)]);
+                    confetti.style.setProperty('--x', `${x}px`);
+                    confetti.style.setProperty('--y', `${y}px`);
+                    confetti.style.setProperty('--delay', `${delay}s`);
+                    container.appendChild(confetti);
+                    confetti.addEventListener('animationend', () => { confetti.remove(); });
+                }
+            }
+
+            function showStep(stepIdToShow) {
+                quizSteps.forEach(step => {
+                    step.id === stepIdToShow ? step.classList.remove('hidden') : step.classList.add('hidden');
+                });
+                if (stepIdToShow === 'quiz-calculating') {
+                    setTimeout(() => showStep('quiz-result'), 2500);
+                } else if (stepIdToShow === 'quiz-result') {
+                    const resultContainer = document.getElementById('quiz-result');
+                    const confettiContainer = resultContainer.querySelector('.confetti-container');
+                    
+                    setTimeout(() => {
+                        resultContainer.classList.add('animate-surprise');
+                        if (confettiContainer) {
+                            createConfetti(confettiContainer);
+                        }
+                    }, 50);
+
+                    startCountdown(10);
+                }
+            }
+
+            quizButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const nextStepId = button.getAttribute('data-next-step');
+                    if (nextStepId) showStep(nextStepId);
+                });
+            });
         }
 
-        quizButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const nextStepId = button.getAttribute('data-next-step');
-                if (nextStepId) showStep(nextStepId);
-            });
-        });
-    </script>
-    <script>
+        // --- LÓGICA DO POP-UP DE PROVA SOCIAL ---
+        (function() {
+            const nomes = ["Maria S.","João P.","Ana C.","Carlos A.","Fernanda L.","Lucas M.","Juliana R.","Pedro H.","Camila F.","Marcos V.","Beatriz G.","Rafael B."];
+            const mensagens = ["acabou de comprar o Guia Definitivo!","garantiu seu acesso ao Guia!"];
+            const tempoVisivel = 5000;
+            const tempoMinimoIntervalo = 4000;
+            const tempoMaximoIntervalo = 4000;
+            const delayInicial = 4000;
+            const popupElement = document.getElementById('social-proof-popup');
+            const messageElement = document.getElementById('popup-message');
+            const audioElement = document.getElementById('notification-sound');
+
+            if (!popupElement || !messageElement || !audioElement) { return; }
+
+            function unlockAudio() {
+                audioElement.play().catch(() => {});
+                audioElement.pause();
+                audioElement.currentTime = 0;
+                document.removeEventListener('click', unlockAudio);
+                document.removeEventListener('touchstart', unlockAudio);
+            }
+            document.addEventListener('click', unlockAudio);
+            document.addEventListener('touchstart', unlockAudio);
+
+            const mostrarPopup = () => {
+                const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+                const mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
+                messageElement.innerHTML = `<strong>${nomeAleatorio}</strong> ${mensagemAleatoria}`;
+                popupElement.classList.add('show');
+                audioElement.currentTime = 0;
+                const playPromise = audioElement.play();
+                if (playPromise !== undefined) { playPromise.catch(error => {}); }
+                setTimeout(() => { popupElement.classList.remove('show'); }, tempoVisivel);
+            };
+
+            const runPopupCycle = () => {
+                mostrarPopup();
+                const proximoIntervalo = Math.floor(Math.random() * (tempoMaximoIntervalo - tempoMinimoIntervalo + 1)) + tempoMinimoIntervalo;
+                setTimeout(runPopupCycle, proximoIntervalo);
+            };
+            setTimeout(runPopupCycle, delayInicial);
+        })();
+
+        // --- INICIALIZAÇÃO DA BIBLIOTECA AOS ---
         AOS.init({ offset: 120, delay: 0, duration: 800, easing: 'ease', once: true, mirror: false, anchorPlacement: 'top-bottom' });
-    </script>
-    <script>
-    (function() {
-        const nomes = ["Maria S.","João P.","Ana C.","Carlos A.","Fernanda L.","Lucas M.","Juliana R.","Pedro H.","Camila F.","Marcos V.","Beatriz G.","Rafael B.","Larissa T.","Gabriel N."];
-        const mensagens = ["acabou de comprar o Guia Definitivo!","garantiu seu acesso ao Guia Definitivo!","acabou de se inscrever no Guia!","também comprou o Guia Definitivo!",];
-        const tempoVisivel = 5000;
-        const tempoMinimoIntervalo = 4000;
-        const tempoMaximoIntervalo = 4000;
-        const delayInicial = 4000;
-        const popupElement = document.getElementById('social-proof-popup');
-        const messageElement = document.getElementById('popup-message');
-        const audioElement = document.getElementById('notification-sound');
-        if (!popupElement || !messageElement || !audioElement) { console.error("Erro: Um dos elementos essenciais do pop-up (HTML ou áudio) não foi encontrado."); return; }
-        function unlockAudio() { audioElement.play().catch(() => {}); audioElement.pause(); audioElement.currentTime = 0; document.removeEventListener('click', unlockAudio); document.removeEventListener('touchstart', unlockAudio); }
-        document.addEventListener('click', unlockAudio); document.addEventListener('touchstart', unlockAudio);
-        const mostrarPopup = () => {
-            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
-            const mensagemAleatoria = mensagens[Math.floor(Math.random() * mensagens.length)];
-            messageElement.innerHTML = `<strong>${nomeAleatorio}</strong> ${mensagemAleatoria}`;
-            popupElement.classList.add('show');
-            audioElement.currentTime = 0;
-            const playPromise = audioElement.play();
-            if (playPromise !== undefined) { playPromise.catch(error => {}); }
-            setTimeout(() => { popupElement.classList.remove('show'); }, tempoVisivel);
-        };
-        const runPopupCycle = () => { mostrarPopup(); const proximoIntervalo = Math.floor(Math.random() * (tempoMaximoIntervalo - tempoMinimoIntervalo + 1)) + tempoMinimoIntervalo; setTimeout(runPopupCycle, proximoIntervalo); };
-        setTimeout(runPopupCycle, delayInicial);
-    })();
+    });
     </script>
 </body>
 </html>
