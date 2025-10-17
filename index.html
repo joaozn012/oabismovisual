@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Reset Metabólico - Reassuma o Controle do Seu Corpo</title>
+    <title>Método Reset Metabólico - Desbloqueie Sua Melhor Versão</title>
     
-    <!-- Chosen Palette: Dark Emerald Glass -->
-    <!-- Application Structure Plan: This SPA merges a premium branding aesthetic with aggressive direct-response marketing tactics into a single, cohesive sales funnel. The information architecture is a persuasive narrative: 1. Dynamic Hero (Video/Animated Headline) to capture attention. 2. Problem Agitation to create relatability. 3. Solution Presentation (The Method's Pillars). 4. Social Proof to build trust. 5. Interactive Quiz Funnel to personalize the offer and increase engagement. 6. The "Surprise" Offer reveal with scarcity (timer, limited spots) and a strong guarantee to drive immediate action. 7. FAQ to handle final objections. This hybrid structure was chosen to maximize conversions by combining the authority of a premium brand with the urgency of a time-sensitive offer. -->
-    <!-- Visualization & Content Choices: Report Info: Core Method Pillars -> Goal: Explain the solution -> Viz/Method: Benefit-driven text sections with high-quality imagery (HTML/CSS) -> Justification: Clearly communicates the value proposition. Report Info: Customer Objections -> Goal: Create an engaging path to the price reveal -> Viz/Method: Interactive multi-step quiz (HTML/JS) -> Interaction: User clicks through questions -> Justification: Increases user investment and makes the final offer feel personalized and earned. Report Info: Sales Urgency -> Goal: Drive immediate purchase decision -> Viz/Method: Dynamic countdown timer, decreasing scarcity counter, and social proof pop-ups (JavaScript) -> Interaction: Real-time updates create FOMO -> Justification: These are proven conversion drivers in direct-response marketing. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #111827; color: #d1d5db; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #d1d5db; overflow-x: hidden; }
         .hero-video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        #hero-video { width: 100%; height: 100%; object-fit: cover; filter: brightness(.6); }
-        .glass-card { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        #hero-video { width: 100%; height: 100%; object-fit: cover; filter: brightness(.5); }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
         #animated-headline .word { display: inline-block; opacity: 0; transform: translateY(20px); animation: fadeInWord .6s cubic-bezier(.215,.61,.355,1) forwards; animation-delay: var(--delay); }
         @keyframes fadeInWord { to { opacity: 1; transform: translateY(0); } }
-        .cta-button { transition: all .3s ease-in-out; box-shadow: 0 0 20px rgba(22,163,74,.7); animation: pulse-glow 2s infinite alternate; }
-        @keyframes pulse-glow { from { box-shadow: 0 0 15px rgba(22,163,74,.6); } to { box-shadow: 0 0 30px rgba(22,163,74,.8); } }
-        .cta-button:hover { transform: translateY(-5px) scale(1.05); animation-play-state: paused; box-shadow: 0 0 35px rgba(22,163,74,1); }
-        .testimonial-card { background: linear-gradient(135deg, #1f2937, #374151); }
-        .quiz-button { transition: all .2s ease-in-out; }
-        .quiz-button:hover { background-color: #047857; transform: scale(1.05); }
-        .floating-purchase-popup { position: fixed; top: 80px; right: 20px; z-index: 9999; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.15); opacity: 0; transform: translateY(-20px); transition: opacity .5s ease-out,transform .5s ease-out; visibility: hidden; max-width: 90%; }
+        .gradient-text { background: linear-gradient(to right, #34d399, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cta-button { transition: all .3s ease-in-out; box-shadow: 0 0 25px rgba(22,163,74,.7); animation: pulse-glow 2s infinite alternate; }
+        @keyframes pulse-glow { from { box-shadow: 0 0 20px rgba(22,163,74,.6); transform: scale(1); } to { box-shadow: 0 0 35px rgba(22,163,74,.9); transform: scale(1.03); } }
+        .cta-button:hover { transform: translateY(-5px) scale(1.08)!important; animation-play-state: paused; box-shadow: 0 0 40px rgba(52, 211, 153, 1); }
+        .testimonial-card { background: linear-gradient(135deg, #1e293b, #334155); }
+        .quiz-button { transition: all .2s ease-in-out; border: 2px solid #10b981; background-color: transparent; }
+        .quiz-button:hover { background-color: #10b981; transform: scale(1.05); box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+        .floating-purchase-popup { position: fixed; bottom: 20px; left: 20px; z-index: 9999; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.15); opacity: 0; transform: translateY(20px); transition: opacity .5s ease-out,transform .5s ease-out; visibility: hidden; max-width: 90%; }
         .floating-purchase-popup.show { opacity: 1; transform: translateY(0); visibility: visible; }
         #quiz-result.animate-surprise { animation: zoomInOffer .8s cubic-bezier(.25,1,.5,1) forwards; }
         @keyframes zoomInOffer { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -34,9 +30,9 @@
         .confetti { position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background-color: var(--confetti-color); opacity: 0; animation: confetti-fall 2.5s ease-out forwards; animation-delay: var(--delay); border-radius: 50%; }
         @keyframes confetti-fall { 0% { opacity: 1; transform: translate(0,0) scale(1.2); } 100% { opacity: 0; transform: translate(var(--x),var(--y)) scale(0); } }
         .sticky-banner { position: sticky; top: 0; z-index: 10000; background-color: #b91c1c; color: white; padding: 10px; text-align: center; font-weight: bold; animation: pulse-banner 2s infinite; }
-        @keyframes pulse-banner { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+        @keyframes pulse-banner { 0%, 100% { transform: scale(1); box-shadow: none; } 50% { transform: scale(1.02); box-shadow: 0 0 15px rgba(255,255,255,0.3); } }
         #scarcity-counter { transition: all 0.3s ease-in-out; display: inline-block; }
-        #scarcity-counter.updated { transform: scale(1.2); color: #dc2626; }
+        #scarcity-counter.updated { transform: scale(1.3); color: #ef4444; }
         .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); }
         .faq-item.open .faq-answer { max-height: 1000px; transition: max-height 1s ease-in-out; }
         .faq-item .faq-icon { transition: transform 0.3s ease; }
@@ -44,6 +40,7 @@
         .timer-pulse { animation: pulse-danger 1s infinite; }
         @keyframes pulse-danger { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 50% { transform: scale(1.05); box-shadow: 0 0 10px 10px rgba(220, 38, 38, 0); } }
         #exit-intent-popup { transition: opacity 0.3s, visibility 0.3s; }
+        .highlight-bonus { border: 2px solid #10b981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); transform: scale(1.05); }
     </style>
 </head>
 <body class="bg-slate-900">
@@ -56,10 +53,10 @@
         <div class="hero-video-container"><video id="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=2069&auto=format&fit=crop"><source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4"></video></div>
         <div class="container mx-auto px-6 text-center z-10">
             <div class="glass-card max-w-4xl mx-auto rounded-2xl p-8 md:p-12">
-                <h1 id="animated-headline" class="text-4xl md:text-6xl font-black mt-6 leading-tight text-white">Reassuma o Controle do Seu Corpo. Para Sempre.</h1>
-                <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-aos="fade-in" data-aos-delay="1200">Esqueça as regras do emagrecimento convencional. Existe um método mais inteligente para remodelar seu corpo, que não envolve contar calorias ou passar horas na academia.</p>
+                <h1 id="animated-headline" class="text-4xl md:text-6xl font-black mt-6 leading-tight text-white">Desbloqueie Sua <span class="gradient-text">Melhor Versão</span>.</h1>
+                <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-aos="fade-in" data-aos-delay="1200">O caminho para o corpo que você deseja não é sobre sacrifício. É sobre inteligência. Descubra o método que reseta seu metabolismo e te devolve o controle.</p>
                 <div class="mt-10" data-aos="zoom-in" data-aos-delay="1500">
-                    <a href="#preco" class="cta-button inline-block bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-lg">🔥 QUERO DESCOBRIR O MÉTODO</a>
+                    <a href="#preco" class="cta-button inline-block bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-full">🔥 SIM, QUERO MINHA TRANSFORMAÇÃO</a>
                     <p class="mt-4 text-sm text-slate-300">Compra Segura | Acesso Imediato e Vitalício</p>
                 </div>
             </div>
@@ -68,30 +65,31 @@
 
     <main>
         <section class="bg-slate-800/50 py-16">
-            <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-down">A Luta Contra a Balança Parece Interminável?</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100"><p class="glass-card p-6 text-lg text-slate-300 h-full">O famoso "efeito sanfona" te persegue, não importa o que você faça?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200"><p class="glass-card p-6 text-lg text-slate-300 h-full">Você se sente perdido(a), sem um plano claro do que comer?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300"><p class="glass-card p-6 text-lg text-slate-300 h-full">Já investiu em métodos "milagrosos" que só levaram sua esperança?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400"><p class="glass-card p-6 text-lg text-slate-300 h-full">A imagem no espelho afeta sua autoestima e confiança?</p></div></div><p class="text-center mt-12 text-xl font-semibold text-green-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">Se você se identificou, a culpa nunca foi sua. Você esteve jogando com as regras erradas.</p></div>
+            <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-down">A Luta Contra a Balança Parece <span class="gradient-text">Injusta</span>?</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ O famoso "efeito sanfona" te persegue, não importa o que você faça?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ Você se sente perdido(a), sem um plano claro do que comer?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ Já investiu em métodos "milagrosos" que só levaram sua esperança?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ A imagem no espelho afeta sua autoestima e confiança?</p></div></div><p class="text-center mt-12 text-xl font-semibold text-green-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">Se você se identificou, a culpa nunca foi sua. Você esteve jogando com as regras erradas.</p></div>
         </section>
 
         <section class="py-20">
-            <div class="container mx-auto px-6"><div class="text-center mb-16" data-aos="fade-down"><h2 class="text-3xl md:text-4xl font-bold text-white">Dentro do Guia: A Estratégia <span class="gradient-text">Definitiva</span></h2><p class="text-lg text-slate-400 mt-4 max-w-3xl mx-auto">Isto não é uma dieta, é um sistema. Um conhecimento que te dá o controle total sobre seu corpo e sua autoestima.</p></div><div class="grid md:grid-cols-2 gap-12 items-center"><div data-aos="fade-right" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1512485800893-b08ec1ea59b1?q=80&w=1974&auto=format&fit=crop" alt="Mulher feliz preparando uma salada" class="rounded-lg shadow-2xl w-full h-auto"></div><div class="space-y-6"><div class="glass-card p-6" data-aos="fade-left" data-aos-delay="200"><h3 class="text-xl font-bold text-green-400">O Código da Alimentação Flexível</h3><p class="text-slate-300 mt-1">Descubra o protocolo para incluir seus pratos favoritos na rotina — sem culpa e sem sabotar seus resultados.</p></div><div class="glass-card p-6" data-aos="fade-left" data-aos-delay="300"><h3 class="text-xl font-bold text-green-400">Ativadores Metabólicos de 15 Minutos</h3><p class="text-slate-300 mt-1">Rotinas curtas e intensas que transformam seu corpo em uma máquina de queimar gordura por até 24 horas.</p></div><div class="glass-card p-6 border-2 border-green-500" data-aos="fade-left" data-aos-delay="400"><h3 class="text-xl font-bold text-green-400">Protocolo Rosto Definido</h3><p class="text-slate-300 mt-1">Técnicas de "Drenagem Reversa" para eliminar o inchaço facial, reduzir a papada e revelar o contorno do seu rosto.</p></div><div class="glass-card p-6" data-aos="fade-left" data-aos-delay="500"><h3 class="text-xl font-bold text-green-400">O Mindset Inabalável</h3><p class="text-slate-300 mt-1">Aprenda a "desprogramar" a ansiedade e a compulsão para se manter motivado(a) de forma consistente.</p></div></div></div></div>
+            <div class="container mx-auto px-6"><div class="text-center mb-16" data-aos="fade-down"><h2 class="text-3xl md:text-4xl font-bold text-white">Os 4 Pilares do <span class="gradient-text">Reset Metabólico</span></h2><p class="text-lg text-slate-400 mt-4 max-w-3xl mx-auto">Isto não é uma dieta, é um sistema. Um conhecimento que te dá o controle total sobre seu corpo e sua autoestima.</p></div><div class="grid md:grid-cols-2 gap-12 items-center"><div data-aos="fade-right" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1512485800893-b08ec1ea59b1?q=80&w=1974&auto=format&fit=crop" alt="Mulher feliz preparando uma salada" class="rounded-lg shadow-2xl w-full h-auto"></div><div class="space-y-6"><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="200"><span class="text-3xl mt-1">🍽️</span><div><h3 class="text-xl font-bold text-green-400">O Código da Alimentação Flexível</h3><p class="text-slate-300 mt-1">Descubra o protocolo para incluir seus pratos favoritos na rotina — sem culpa e sem sabotar seus resultados.</p></div></div><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="300"><span class="text-3xl mt-1">⚡️</span><div><h3 class="text-xl font-bold text-green-400">Ativadores Metabólicos de 15 Minutos</h3><p class="text-slate-300 mt-1">Rotinas curtas e intensas que transformam seu corpo em uma máquina de queimar gordura por até 24 horas.</p></div></div><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="400"><span class="text-3xl mt-1">💎</span><div><h3 class="text-xl font-bold text-green-400">Protocolo Rosto Definido & Anti-Inchaço</h3><p class="text-slate-300 mt-1">Técnicas de "Drenagem Reversa" para eliminar o inchaço facial e revelar o contorno do seu rosto.</p></div></div><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="500"><span class="text-3xl mt-1">🧠</span><div><h3 class="text-xl font-bold text-green-400">O Mindset Inabalável</h3><p class="text-slate-300 mt-1">Aprenda a "desprogramar" a ansiedade e a compulsão para se manter motivado(a) de forma consistente.</p></div></div></div></div></div>
         </section>
         
         <section id="bonus" class="bg-slate-800/50 py-20">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">E ainda... Garanta <span class="gradient-text">3 Bônus Exclusivos</span> (Hoje)</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
                         <span class="text-4xl">📚</span>
                         <h3 class="text-xl font-bold text-green-400 mt-4 mb-2">Guia de Receitas "Queima-Gordura"</h3>
                         <p class="text-slate-300">Receitas deliciosas e rápidas de fazer que aceleram seu metabolismo.</p>
                         <p class="text-slate-500 line-through mt-2">Valor: R$47,00</p>
                     </div>
-                    <div class="glass-card p-8 border-2 border-green-500" data-aos="fade-up" data-aos-delay="200">
-                         <span class="text-4xl">🧠</span>
+                    <div class="glass-card p-8 rounded-xl highlight-bonus" data-aos="fade-up" data-aos-delay="200">
+                         <span class="text-xs font-bold uppercase bg-green-500 text-slate-900 px-3 py-1 rounded-full absolute -top-4">Bônus Principal</span>
+                        <span class="text-4xl">🎯</span>
                         <h3 class="text-xl font-bold text-green-400 mt-4 mb-2">Checklist Anti-Autossabotagem</h3>
                         <p class="text-slate-300">A ferramenta mental para vencer a procrastinação e a compulsão nos dias difíceis.</p>
-                         <p class="text-slate-500 line-through mt-2">Valor: R$29,00</p>
+                         <p class="text-slate-500 line-through mt-2">Valor: R$67,00</p>
                     </div>
-                    <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="300">
                         <span class="text-4xl">🤝</span>
                         <h3 class="text-xl font-bold text-green-400 mt-4 mb-2">Comunidade VIP</h3>
                         <p class="text-slate-300">Acesso a um grupo fechado com outras pessoas na mesma jornada para apoio e motivação.</p>
@@ -101,25 +99,79 @@
             </div>
         </section>
 
-        <section class="py-20"><div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="fade-down">Milhares de Vidas Já Foram <span class="gradient-text">Transformadas</span></h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="100"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Carla Mendes</p><p class="text-sm text-slate-300">Perdeu 12kg</p></div></div><p class="text-slate-200">"Eu já tinha tentado de tudo. Esse guia foi a virada de chave! É tão fácil de seguir, e pela primeira vez eu emagreci sem sofrer."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg lg:scale-105" data-aos="zoom-in-up" data-aos-delay="200"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Ricardo Alves</p><p class="text-sm text-slate-300">Perdeu 18kg</p></div></div><p class="text-slate-200">"O melhor investimento que fiz na minha saúde. Perdi a barriga e ganhei uma energia que não sentia há anos. Recomendo de olhos fechados."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="300"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Juliana Ferreira</p><p class="text-sm text-slate-300">Perdeu 8kg</p></div></div><p class="text-slate-200">"Sempre tive vergonha do meu rosto redondo. O capítulo sobre isso vale ouro! A diferença no espelho foi gritante."</p></div></div></div></section>
+        <section class="py-20"><div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="fade-down">Milhares de Vidas Já Foram <span class="gradient-text">Transformadas</span></h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="100"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Carla Mendes</p><p class="text-sm text-slate-300">Perdeu 12kg</p></div></div><p class="text-slate-200">"Eu já tinha tentado de tudo. Esse guia foi a virada de chave! É tão fácil de seguir, e pela primeira vez eu emagreci sem sofrer."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg lg:scale-105 border-2 border-green-500" data-aos="zoom-in-up" data-aos-delay="200"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Ricardo Alves</p><p class="text-sm text-slate-300">Perdeu 18kg</p></div></div><p class="text-slate-200">"O melhor investimento que fiz na minha saúde. Perdi a barriga e ganhei uma energia que não sentia há anos. Recomendo de olhos fechados."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="300"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Juliana Ferreira</p><p class="text-sm text-slate-300">Perdeu 8kg</p></div></div><p class="text-slate-200">"Sempre tive vergonha do meu rosto redondo. O capítulo sobre isso vale ouro! A diferença no espelho foi gritante."</p></div></div></div></section>
 
-        <section id="preco" class="py-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.9)), url('https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1974&auto=format&fit=crop');">
+        <section id="preco" class="py-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1974&auto=format&fit=crop');">
             <div class="container mx-auto px-6">
                 <div id="quiz-container" class="glass-card rounded-xl shadow-2xl max-w-2xl mx-auto p-8 md:p-12 text-center" data-aos="zoom-in">
-                    <div id="quiz-step-1"><span class="text-green-400 font-bold uppercase">DESCUBRA SUA OFERTA PERSONALIZADA</span><h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Qual seu maior objetivo ao buscar o emagrecimento?</h2><div class="mt-8 space-y-4"><button data-next-step="quiz-step-2" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Melhorar minha saúde e energia</button><button data-next-step="quiz-step-2" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Aumentar minha autoestima</button><button data-next-step="quiz-step-2" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Vestir as roupas que eu gosto</button></div></div>
-                    <div id="quiz-step-2" class="hidden"><span class="text-green-400 font-bold uppercase">ESTAMOS QUASE LÁ...</span><h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Você já tentou outros métodos para emagrecer antes?</h2><div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4"><button data-next-step="quiz-step-3" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Sim, vários e me frustrei</button><button data-next-step="quiz-step-3" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Não, esta é minha primeira vez</button></div></div>
-                    <div id="quiz-step-3" class="hidden"><span class="text-green-400 font-bold uppercase">ÚLTIMA PERGUNTA!</span><h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Você está pronto(a) para seguir um passo a passo simples e eficaz?</h2><div class="mt-8 space-y-4"><button data-next-step="quiz-calculating" class="quiz-button w-full text-lg bg-green-600 text-white font-semibold py-4 px-6 rounded-lg">Sim, estou 100% comprometido(a)!</button></div></div>
-                    <div id="quiz-calculating" class="hidden"><h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Analisando suas respostas...</h2><p class="text-slate-300 mt-2">Estamos preparando uma condição especial para você.</p><div class="flex justify-center items-center h-32"><div class="animate-spin rounded-full h-16 w-16 border-b-4 border-green-500"></div></div></div>
+                    <div id="quiz-step-1">
+                        <span class="text-green-400 font-bold uppercase">PASSO 1 de 3</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">O que mais te frustra <span class="gradient-text">HOJE</span> na sua jornada de emagrecimento?</h2>
+                        <div class="mt-8 space-y-4">
+                            <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Falta de resultados visíveis</button>
+                            <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">A "fome" constante e a vontade de doces</button>
+                            <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Não saber por onde começar</button>
+                        </div>
+                    </div>
+                    <div id="quiz-step-2" class="hidden">
+                        <span class="text-green-400 font-bold uppercase">PASSO 2 de 3</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Imagine-se daqui a 30 dias. Qual conquista te deixaria <span class="gradient-text">mais feliz</span>?</h2>
+                        <div class="mt-8 space-y-4">
+                            <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Olhar no espelho e amar o que vejo</button>
+                            <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Ter energia de sobra o dia todo</button>
+                            <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Receber um elogio inesperado</button>
+                        </div>
+                    </div>
+                    <div id="quiz-step-3" class="hidden">
+                        <span class="text-green-400 font-bold uppercase">ÚLTIMO PASSO!</span>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">O método é sobre <span class="gradient-text">consistência</span>, não perfeição. Você consegue dedicar 15 minutos por dia para si mesmo(a)?</h2>
+                        <div class="mt-8 space-y-4">
+                            <button data-next-step="quiz-calculating" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Sim, meu futuro vale esse tempo!</button>
+                             <button data-next-step="quiz-calculating" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Com certeza, estou pronto(a)!</button>
+                        </div>
+                    </div>
+                    <div id="quiz-calculating" class="hidden">
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Analisando suas respostas...</h2>
+                        <p class="text-slate-300 mt-2">Estamos calibrando o plano perfeito e preparando uma condição única para você.</p>
+                        <div class="flex justify-center items-center h-32"><div class="animate-spin rounded-full h-16 w-16 border-b-4 border-green-500"></div></div>
+                    </div>
                     <div id="quiz-result" class="hidden">
                         <div class="confetti-container"></div>
-                        <span class="text-yellow-400 font-bold uppercase">Parabéns! Vaga Reservada!</span><h2 class="text-3xl md:text-4xl font-black text-white mt-2">Você Desbloqueou Seu Pacote Completo!</h2>
-                        <div class="text-left bg-slate-800/50 border border-slate-700 rounded-lg p-6 my-8"><p class="font-bold text-white text-center mb-4">Ao garantir seu acesso hoje, você recebe:</p><ul class="space-y-3 text-slate-300"><li class="flex items-start"><span class="text-green-400 mr-3">✔</span><div><span class="font-bold">O Guia "Reset Metabólico"</span><span class="text-slate-500 line-through ml-2">R$171,00</span></div></li><li class="flex items-start"><span class="text-green-400 mr-3">✔</span><div><span class="font-bold text-green-400">BÔNUS 1:</span> Guia de Receitas "Queima-Gordura"<span class="text-slate-500 line-through ml-2">R$47,00</span></div></li><li class="flex items-start"><span class="text-green-400 mr-3">✔</span><div><span class="font-bold text-green-400">BÔNUS 2:</span> Checklist Anti-Autossabotagem<span class="text-slate-500 line-through ml-2">R$29,00</span></div></li></ul><div class="text-center mt-4 pt-4 border-t border-slate-700"><p class="text-slate-400">Valor Total: <span class="line-through">R$247,00</span></p><p class="font-bold text-lg text-white">Seu Acesso Hoje por Apenas:</p></div></div>
-                        <p class="text-6xl md:text-7xl font-black gradient-text my-2">R$ 47,90</p>
-                        <div class="my-4 p-3 bg-red-900/50 border border-red-500/50 rounded-lg" id="timer-container"><p class="text-red-300 font-semibold">Sua oferta expira em:</p><div id="countdown-timer" class="text-3xl font-mono font-bold text-red-400 transition-transform duration-300">10:00</div></div>
-                        <div class="my-6 p-4 bg-yellow-900/30 border-l-4 border-yellow-500 text-yellow-300" role="alert"><p>👥 <span id="live-counter" class="font-bold">117</span> pessoas a ver esta oferta agora!</p><p class="font-bold uppercase mt-2">Atenção: Vagas Quase Esgotadas!</p><p>Restam apenas <span id="scarcity-counter" class="text-red-400 font-black text-2xl">11</span> vagas com este desconto.</p></div>
-                        <a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-lg w-full mt-2">GARANTIR MINHA VAGA AGORA</a>
+                        <span class="text-yellow-400 font-bold uppercase tracking-widest">Parabéns! Vaga Reservada!</span>
+                        <h2 class="text-3xl md:text-4xl font-black text-white mt-2">Você se Qualificou Para o <span class="gradient-text">Pacote Completo</span>!</h2>
+                        <div class="text-left bg-slate-800/50 border border-slate-700 rounded-lg p-6 my-8">
+                            <p class="font-bold text-white text-center mb-4">Ao garantir seu acesso hoje, você recebe:</p>
+                            <ul class="space-y-3 text-slate-300">
+                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold">O Guia "Reset Metabólico"</span><span class="text-slate-500 line-through ml-2">R$171,00</span></div></li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold text-green-400">BÔNUS 1:</span> Guia de Receitas<span class="text-slate-500 line-through ml-2">R$47,00</span></div></li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold text-green-400">BÔNUS 2:</span> Checklist Anti-Autossabotagem<span class="text-slate-500 line-through ml-2">R$67,00</span></div></li>
+                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold text-green-400">BÔNUS 3:</span> Comunidade VIP<span class="text-slate-500 line-through ml-2">R$97,00</span></div></li>
+                            </ul>
+                            <div class="text-center mt-4 pt-4 border-t border-slate-700">
+                                <p class="text-slate-400">Valor Total: <span class="line-through">R$382,00</span></p>
+                                <p class="font-bold text-lg text-white">Seu Acesso Hoje por Apenas:</p>
+                            </div>
+                        </div>
+                        <p class="text-6xl md:text-7xl font-black gradient-text my-2 animate-pulse">R$ 19,90</p>
+                        <p class="text-white font-semibold">ou 2x de R$10,45</p>
+                        <div class="my-4 p-3 bg-red-900/50 border border-red-500/50 rounded-lg" id="timer-container">
+                            <p class="text-red-300 font-semibold">Sua oferta exclusiva expira em:</p>
+                            <div id="countdown-timer" class="text-3xl font-mono font-bold text-red-400 transition-transform duration-300">10:00</div>
+                        </div>
+                        <div class="my-6 p-4 bg-yellow-900/30 border-l-4 border-yellow-500 text-yellow-300" role="alert">
+                            <p>👥 <span id="live-counter" class="font-bold">117</span> pessoas estão vendo esta oferta agora!</p>
+                            <p class="font-bold uppercase mt-2">Atenção: Vagas Quase Esgotadas!</p>
+                            <p>Restam apenas <span id="scarcity-counter" class="text-red-400 font-black text-2xl">11</span> vagas com este desconto.</p>
+                        </div>
+                        <a href="https://pay.cakto.com.br/snc4ike_572388" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-full w-full mt-2">
+                            SIM, QUERO MINHA TRANSFORMAÇÃO AGORA →
+                        </a>
                         <div class="mt-8 flex items-center justify-center p-4 bg-slate-800/50 rounded-lg border-2 border-dashed border-slate-600">
-                             <div class="text-left"><h4 class="font-bold text-lg text-green-400">VOCÊ NÃO TEM NADA A PERDER, SÓ GORDURA.</h4><p class="text-sm text-slate-400 mt-1">Você tem 7 dias completos para aplicar o método. Se não ver resultados, ou se simplesmente achar que não é para você, me envie um e-mail e devolvo cada centavo, sem burocracia. O risco é 100% meu.</p></div>
+                            <span class="text-5xl mr-4">🛡️</span>
+                            <div class="text-left">
+                                <h4 class="font-bold text-lg text-green-400">GARANTIA BLINDADA DE 7 DIAS</h4>
+                                <p class="text-sm text-slate-400 mt-1">O risco é 100% meu. Se em 7 dias você não amar os resultados, basta um e-mail para ter cada centavo de volta. Simples assim.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -128,11 +180,12 @@
 
         <section id="faq" class="py-20">
             <div class="container mx-auto px-6 max-w-3xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Perguntas <span class="gradient-text">Frequentes</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Ainda tem <span class="gradient-text">Dúvidas</span>?</h2>
                 <div id="faq-container" class="space-y-4">
-                    <div class="faq-item glass-card overflow-hidden"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Como vou receber o acesso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com seu login e senha para acessar a área de membros exclusiva.</p></div></div>
-                    <div class="faq-item glass-card overflow-hidden"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Por quanto tempo terei acesso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">O acesso é vitalício! Você pode ver e rever as aulas quantas vezes quiser, e ainda terá acesso a todas as futuras atualizações.</p></div></div>
-                    <div class="faq-item glass-card overflow-hidden"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">E se eu não gostar do curso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">Seu risco é zero. Você tem uma garantia incondicional de 7 dias. Se por qualquer motivo não gostar do método, basta pedir o reembolso e devolveremos 100% do seu dinheiro.</p></div></div>
+                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Como vou receber o acesso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com seu login e senha para acessar a área de membros exclusiva.</p></div></div>
+                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Por quanto tempo terei acesso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">O acesso é vitalício! Você pode ver e rever o material quantas vezes quiser, e ainda terá acesso a todas as futuras atualizações sem custo adicional.</p></div></div>
+                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Preciso de equipamentos caros?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">Não! Os Ativadores Metabólicos foram desenhados para serem feitos em qualquer lugar, usando apenas o peso do seu corpo. Você não precisa de academia ou equipamentos.</p></div></div>
+                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">E se eu não gostar do método?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">Seu risco é zero. Você tem uma garantia incondicional de 7 dias. Se por qualquer motivo não gostar do método, basta pedir o reembolso e devolveremos 100% do seu dinheiro, sem perguntas.</p></div></div>
                 </div>
             </div>
         </section>
@@ -140,18 +193,18 @@
 
     <footer class="bg-slate-900 text-white text-center py-6 px-4" data-aos="fade-up">
         <p>&copy; 2025 Método Reset Metabólico. Todos os direitos reservados.</p>
-        <p class="text-sm text-slate-400 mt-2 max-w-3xl mx-auto">Este produto se trata de um livro digital (ebook) e não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Consulte sempre um profissional da saúde.</p>
+        <p class="text-sm text-slate-400 mt-2 max-w-3xl mx-auto">Este produto se trata de um livro digital (ebook) e não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Consulte sempre um profissional da saúde antes de iniciar qualquer programa de exercícios ou plano alimentar.</p>
     </footer>
 
-    <div id="social-proof-popup" class="floating-purchase-popup glass-card"><div class="p-3 flex items-center"><span class="text-green-400 mr-3 text-2xl">✔</span><p id="popup-message" class="text-sm text-slate-200"></p></div></div>
+    <div id="social-proof-popup" class="floating-purchase-popup glass-card"><div class="p-3 flex items-center"><span class="text-green-400 mr-3 text-2xl">🎉</span><p id="popup-message" class="text-sm text-slate-200"></p></div></div>
     <audio id="notification-sound" preload="auto"><source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c649d2263.mp3" type="audio/mpeg"></audio>
     
     <div id="exit-intent-popup" class="hidden fixed inset-0 bg-black/80 z-[10001] flex items-center justify-center p-4 opacity-0 visibility-hidden">
         <div class="glass-card max-w-md w-full p-8 rounded-2xl text-center relative" data-aos="zoom-in">
-            <button id="close-exit-popup" class="absolute top-4 right-4 text-slate-400 hover:text-white">&times;</button>
-            <h2 class="text-3xl font-bold text-white mb-4">ESPERE!</h2>
-            <p class="text-slate-300 mb-6">Você está a um passo de desistir da sua transformação... Como incentivo final, liberei um <span class="font-bold text-green-400">BÔNUS EXTRA</span> para você: O Guia de Receitas Detox de 7 Dias.</p>
-            <a href="#preco" id="exit-popup-cta" class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-8 rounded-lg">PEGAR BÔNUS E VOLTAR À OFERTA</a>
+            <button id="close-exit-popup" class="absolute top-4 right-4 text-slate-400 hover:text-white text-3xl">&times;</button>
+            <h2 class="text-3xl font-bold text-white mb-4"><span class="gradient-text">ESPERE!</span></h2>
+            <p class="text-slate-300 mb-6">Você está a um passo de desistir da sua transformação... Como incentivo final, liberei um <span class="font-bold text-yellow-400">BÔNUS SURPRESA</span> para você: O Guia de Receitas Detox de 7 Dias.</p>
+            <a href="#preco" id="exit-popup-cta" class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-8 rounded-full">PEGAR BÔNUS E VOLTAR À OFERTA</a>
         </div>
     </div>
 
@@ -165,9 +218,14 @@
             headline.innerHTML = '';
             words.forEach((word, index) => {
                 const wordSpan = document.createElement('span');
-                wordSpan.className = 'word';
-                wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : '');
-                wordSpan.style.setProperty('--delay', `${index * 0.1}s`);
+                if(word.includes('Versão.')){
+                    wordSpan.className = 'word gradient-text';
+                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : '');
+                } else {
+                     wordSpan.className = 'word';
+                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : '');
+                }
+                wordSpan.style.setProperty('--delay', `${index * 0.15}s`);
                 headline.appendChild(wordSpan);
             });
         }
@@ -254,7 +312,7 @@
 
         (function() {
             const nomes = ["Maria S. de Salvador", "João P. de Lisboa", "Ana C. de São Paulo", "Carlos A. do Porto", "Fernanda L. do Rio de Janeiro", "Lucas M. de Curitiba"];
-            const mensagens = ["acabou de garantir o seu acesso!", "comprou o Guia Reset Metabólico!"];
+            const mensagens = ["acabou de garantir o acesso!", "comprou o Guia Reset Metabólico!", "iniciou sua transformação!"];
             const popupElement = document.getElementById('social-proof-popup');
             const messageElement = document.getElementById('popup-message');
             const audioElement = document.getElementById('notification-sound');
@@ -294,7 +352,8 @@
             faqContainer.addEventListener('click', (e) => {
                 const questionHeader = e.target.closest('.faq-question');
                 if (questionHeader) {
-                    questionHeader.parentElement.classList.toggle('open');
+                    const currentItem = questionHeader.parentElement;
+                    currentItem.classList.toggle('open');
                 }
             });
         }
@@ -324,4 +383,3 @@
     </script>
 </body>
 </html>
-
