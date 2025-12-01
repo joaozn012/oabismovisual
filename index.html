@@ -1,378 +1,280 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Reset Metabólico - Desbloqueie Sua Melhor Versão</title>
-    
+    <title>Sessão Zero - Reset Mental</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #d1d5db; overflow-x: hidden; }
-        .hero-video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1; }
-        #hero-video { width: 100%; height: 100%; object-fit: cover; filter: brightness(.5); }
-        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        #animated-headline .word { display: inline-block; opacity: 0; transform: translateY(20px); animation: fadeInWord .6s cubic-bezier(.215,.61,.355,1) forwards; animation-delay: var(--delay); }
-        @keyframes fadeInWord { to { opacity: 1; transform: translateY(0); } }
-        .gradient-text { background: linear-gradient(to right, #34d399, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .cta-button { transition: all .3s ease-in-out; box-shadow: 0 0 25px rgba(22,163,74,.7); animation: pulse-glow 2s infinite alternate; }
-        @keyframes pulse-glow { from { box-shadow: 0 0 20px rgba(22,163,74,.6); transform: scale(1); } to { box-shadow: 0 0 35px rgba(22,163,74,.9); transform: scale(1.03); } }
-        .cta-button:hover { transform: translateY(-5px) scale(1.08)!important; animation-play-state: paused; box-shadow: 0 0 40px rgba(52, 211, 153, 1); }
-        .testimonial-card { background: linear-gradient(135deg, #1e293b, #334155); }
-        .quiz-button { transition: all .2s ease-in-out; border: 2px solid #10b981; background-color: transparent; }
-        .quiz-button:hover { background-color: #10b981; transform: scale(1.05); box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
-        .floating-purchase-popup { position: fixed; bottom: 20px; left: 20px; z-index: 9999; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.15); opacity: 0; transform: translateY(20px); transition: opacity .5s ease-out,transform .5s ease-out; visibility: hidden; max-width: 90%; }
-        .floating-purchase-popup.show { opacity: 1; transform: translateY(0); visibility: visible; }
-        #quiz-result.animate-surprise { animation: zoomInOffer .8s cubic-bezier(.25,1,.5,1) forwards; }
-        @keyframes zoomInOffer { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .confetti-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 20; }
-        .confetti { position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background-color: var(--confetti-color); opacity: 0; animation: confetti-fall 2.5s ease-out forwards; animation-delay: var(--delay); border-radius: 50%; }
-        @keyframes confetti-fall { 0% { opacity: 1; transform: translate(0,0) scale(1.2); } 100% { opacity: 0; transform: translate(var(--x),var(--y)) scale(0); } }
-        .sticky-banner { position: sticky; top: 0; z-index: 10000; background-color: #b91c1c; color: white; padding: 10px; text-align: center; font-weight: bold; animation: pulse-banner 2s infinite; }
-        @keyframes pulse-banner { 0%, 100% { transform: scale(1); box-shadow: none; } 50% { transform: scale(1.02); box-shadow: 0 0 15px rgba(255,255,255,0.3); } }
-        #scarcity-counter { transition: all 0.3s ease-in-out; display: inline-block; }
-        #scarcity-counter.updated { transform: scale(1.3); color: #ef4444; }
-        .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); }
-        .faq-item.open .faq-answer { max-height: 1000px; transition: max-height 1s ease-in-out; }
-        .faq-item .faq-icon { transition: transform 0.3s ease; }
-        .faq-item.open .faq-icon { transform: rotate(180deg); }
-        .timer-pulse { animation: pulse-danger 1s infinite; }
-        @keyframes pulse-danger { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 50% { transform: scale(1.05); box-shadow: 0 0 10px 10px rgba(220, 38, 38, 0); } }
-        #exit-intent-popup { transition: opacity 0.3s, visibility 0.3s; }
-        .highlight-bonus { border: 2px solid #10b981; box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); transform: scale(1.05); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Cores Personalizadas */
+        .text-blood { color: #CC0000; }
+        .bg-blood { background-color: #CC0000; }
+        .text-gold { color: #FFD700; }
+        .bg-gold { background-color: #FFD700; }
+        .border-gold { border-color: #FFD700; }
+        
+        /* Botão Pulsante */
+        .btn-pulse {
+            animation: pulse-gold 2s infinite;
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+
+        /* Mockup do Player */
+        .player-mockup {
+            background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+            border: 1px solid #333;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
-<body class="bg-slate-900">
+<body class="antialiased">
 
-    <div class="sticky-banner">
-        ATENÇÃO: Sua condição especial de 72% de desconto expira nesta visita!
-    </div>
+    <!-- CONTAINER PRINCIPAL (Simula a largura mobile para foco) -->
+    <main class="max-w-lg mx-auto w-full flex flex-col items-center">
 
-    <header class="relative text-white h-screen min-h-[700px] flex items-center justify-center">
-        <div class="hero-video-container"><video id="hero-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=2069&auto=format&fit=crop"><source src="https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4" type="video/mp4"></video></div>
-        <div class="container mx-auto px-6 text-center z-10">
-            <div class="glass-card max-w-4xl mx-auto rounded-2xl p-8 md:p-12">
-                <h1 id="animated-headline" class="text-4xl md:text-6xl font-black mt-6 leading-tight text-white">Desbloqueie Sua <span class="gradient-text">Melhor Versão</span>.</h1>
-                <p class="mt-6 text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-aos="fade-in" data-aos-delay="1200">O caminho para o corpo que você deseja não é sobre sacrifício. É sobre inteligência. Descubra o método que reseta seu metabolismo e te devolve o controle.</p>
-                <div class="mt-10" data-aos="zoom-in" data-aos-delay="1500">
-                    <a href="#preco" class="cta-button inline-block bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-full">🔥 SIM, QUERO MINHA TRANSFORMAÇÃO</a>
-                    <p class="mt-4 text-sm text-slate-300">Compra Segura | Acesso Imediato e Vitalício</p>
-                </div>
+        <!-- BLOCO 1: A DOBRA -->
+        <section class="w-full px-6 py-12 text-center flex flex-col gap-6">
+            <!-- Headline -->
+            <h1 class="text-4xl md:text-5xl font-black text-blood leading-tight tracking-tighter uppercase">
+                Não ouse entrar em 2026 assim.
+            </h1>
+
+            <!-- Sub-headline -->
+            <p class="text-gray-300 text-lg leading-relaxed">
+                Você está tentando construir um ano novo em cima de escombros velhos. Pare de se enganar. Formate sua mente, zere a culpa e renasça em 30 minutos.
+            </p>
+
+            <!-- Elemento Visual (VÍDEO DO YOUTUBE CORRIGIDO - ID lpUHZMyUZoI) -->
+            <div class="w-full aspect-video bg-black rounded-lg border border-gray-800 overflow-hidden shadow-lg shadow-red-900/20 relative z-10">
+                <iframe 
+                    class="w-full h-full absolute top-0 left-0"
+                    src="https://www.youtube.com/embed/lpUHZMyUZoI" 
+                    title="Sessão Zero Player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
-        </div>
-    </header>
+            
+            <p class="text-sm text-gray-400 animate-pulse">🔈 Ligue o som. A experiência começa aqui.</p>
 
-    <main>
-        <section class="bg-slate-800/50 py-16">
-            <div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center mb-12 text-white" data-aos="fade-down">A Luta Contra a Balança Parece <span class="gradient-text">Injusta</span>?</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ O famoso "efeito sanfona" te persegue, não importa o que você faça?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ Você se sente perdido(a), sem um plano claro do que comer?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="300"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ Já investiu em métodos "milagrosos" que só levaram sua esperança?</p></div><div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="400"><p class="glass-card p-6 text-lg text-slate-300 h-full">❌ A imagem no espelho afeta sua autoestima e confiança?</p></div></div><p class="text-center mt-12 text-xl font-semibold text-green-400 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="500">Se você se identificou, a culpa nunca foi sua. Você esteve jogando com as regras erradas.</p></div>
-        </section>
-
-        <section class="py-20">
-            <div class="container mx-auto px-6"><div class="text-center mb-16" data-aos="fade-down"><h2 class="text-3xl md:text-4xl font-bold text-white">Os 4 Pilares do <span class="gradient-text">Reset Metabólico</span></h2><p class="text-lg text-slate-400 mt-4 max-w-3xl mx-auto">Isto não é uma dieta, é um sistema. Um conhecimento que te dá o controle total sobre seu corpo e sua autoestima.</p></div><div class="grid md:grid-cols-2 gap-12 items-center"><div data-aos="fade-right" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1512485800893-b08ec1ea59b1?q=80&w=1974&auto=format&fit=crop" alt="Mulher feliz preparando uma salada" class="rounded-lg shadow-2xl w-full h-auto"></div><div class="space-y-6"><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="200"><span class="text-3xl mt-1">🍽️</span><div><h3 class="text-xl font-bold text-green-400">O Código da Alimentação Flexível</h3><p class="text-slate-300 mt-1">Descubra o protocolo para incluir seus pratos favoritos na rotina — sem culpa e sem sabotar seus resultados.</p></div></div><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="300"><span class="text-3xl mt-1">⚡️</span><div><h3 class="text-xl font-bold text-green-400">Ativadores Metabólicos de 15 Minutos</h3><p class="text-slate-300 mt-1">Rotinas curtas e intensas que transformam seu corpo em uma máquina de queimar gordura por até 24 horas.</p></div></div><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="400"><span class="text-3xl mt-1">💎</span><div><h3 class="text-xl font-bold text-green-400">Protocolo Rosto Definido & Anti-Inchaço</h3><p class="text-slate-300 mt-1">Técnicas de "Drenagem Reversa" para eliminar o inchaço facial e revelar o contorno do seu rosto.</p></div></div><div class="glass-card p-6 flex items-start space-x-4" data-aos="fade-left" data-aos-delay="500"><span class="text-3xl mt-1">🧠</span><div><h3 class="text-xl font-bold text-green-400">O Mindset Inabalável</h3><p class="text-slate-300 mt-1">Aprenda a "desprogramar" a ansiedade e a compulsão para se manter motivado(a) de forma consistente.</p></div></div></div></div></div>
-        </section>
-        
-        <section id="bonus" class="bg-slate-800/50 py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">E ainda... Garanta <span class="gradient-text">2 Bônus Exclusivos</span> (Hoje)</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center max-w-4xl mx-auto">
-                    <div class="glass-card p-8 rounded-xl" data-aos="fade-up" data-aos-delay="100">
-                        <span class="text-4xl">📚</span>
-                        <h3 class="text-xl font-bold text-green-400 mt-4 mb-2">Guia de Receitas "Queima-Gordura"</h3>
-                        <p class="text-slate-300">Receitas deliciosas e rápidas de fazer que aceleram seu metabolismo.</p>
-                        <p class="text-slate-500 line-through mt-2">Valor: R$47,00</p>
-                    </div>
-                    <div class="glass-card p-8 rounded-xl highlight-bonus" data-aos="fade-up" data-aos-delay="200">
-                         <span class="text-xs font-bold uppercase bg-green-500 text-slate-900 px-3 py-1 rounded-full absolute -top-4">Bônus Principal</span>
-                        <span class="text-4xl">🎯</span>
-                        <h3 class="text-xl font-bold text-green-400 mt-4 mb-2">Checklist Anti-Autossabotagem</h3>
-                        <p class="text-slate-300">A ferramenta mental para vencer a procrastinação e a compulsão nos dias difíceis.</p>
-                         <p class="text-slate-500 line-through mt-2">Valor: R$67,00</p>
-                    </div>
-                </div>
+            <!-- Botão CTA -->
+            <div class="w-full mt-4">
+                <a href="#" class="block w-full bg-gold text-black font-black text-xl py-5 rounded-lg uppercase tracking-wide btn-pulse transform hover:scale-105 transition-all">
+                    Quero meu reset mental agora
+                </a>
+                <p class="text-xs text-gray-500 mt-3">Oferta por tempo limitado: <span class="text-white">R$ 34,90</span></p>
             </div>
         </section>
 
-        <section class="py-20"><div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-center text-white mb-12" data-aos="fade-down">Milhares de Vidas Já Foram <span class="gradient-text">Transformadas</span></h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="100"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Carla Mendes</p><p class="text-sm text-slate-300">Perdeu 12kg</p></div></div><p class="text-slate-200">"Eu já tinha tentado de tudo. Esse guia foi a virada de chave! É tão fácil de seguir, e pela primeira vez eu emagreci sem sofrer."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg lg:scale-105 border-2 border-green-500" data-aos="zoom-in-up" data-aos-delay="200"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Ricardo Alves</p><p class="text-sm text-slate-300">Perdeu 18kg</p></div></div><p class="text-slate-200">"O melhor investimento que fiz na minha saúde. Perdi a barriga e ganhei uma energia que não sentia há anos. Recomendo de olhos fechados."</p></div><div class="testimonial-card rounded-lg p-8 text-white shadow-lg" data-aos="zoom-in-up" data-aos-delay="300"><div class="flex items-center mb-4"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt="Depoimento de cliente" class="w-14 h-14 rounded-full border-2 border-green-400"><div class="ml-4"><p class="font-bold text-lg">Juliana Ferreira</p><p class="text-sm text-slate-300">Perdeu 8kg</p></div></div><p class="text-slate-200">"Sempre tive vergonha do meu rosto redondo. O capítulo sobre isso vale ouro! A diferença no espelho foi gritante."</p></div></div></div></section>
-
-        <section id="preco" class="py-20 bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1974&auto=format&fit=crop');">
-            <div class="container mx-auto px-6">
-                <div id="quiz-container" class="glass-card rounded-xl shadow-2xl max-w-2xl mx-auto p-8 md:p-12 text-center" data-aos="zoom-in">
-                    <div id="quiz-step-1">
-                        <span class="text-green-400 font-bold uppercase">PASSO 1 de 3</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">O que mais te frustra <span class="gradient-text">HOJE</span> na sua jornada de emagrecimento?</h2>
-                        <div class="mt-8 space-y-4">
-                            <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Falta de resultados visíveis</button>
-                            <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">A "fome" constante e a vontade de doces</button>
-                            <button data-next-step="quiz-step-2" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Não saber por onde começar</button>
-                        </div>
-                    </div>
-                    <div id="quiz-step-2" class="hidden">
-                        <span class="text-green-400 font-bold uppercase">PASSO 2 de 3</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Imagine-se daqui a 30 dias. Qual conquista te deixaria <span class="gradient-text">mais feliz</span>?</h2>
-                        <div class="mt-8 space-y-4">
-                            <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Olhar no espelho e amar o que vejo</button>
-                            <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Ter energia de sobra o dia todo</button>
-                            <button data-next-step="quiz-step-3" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Receber um elogio inesperado</button>
-                        </div>
-                    </div>
-                    <div id="quiz-step-3" class="hidden">
-                        <span class="text-green-400 font-bold uppercase">ÚLTIMO PASSO!</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">O método é sobre <span class="gradient-text">consistência</span>, não perfeição. Você consegue dedicar 15 minutos por dia para si mesmo(a)?</h2>
-                        <div class="mt-8 space-y-4">
-                            <button data-next-step="quiz-calculating" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Sim, meu futuro vale esse tempo!</button>
-                             <button data-next-step="quiz-calculating" class="quiz-button w-full text-lg text-white font-semibold py-4 px-6 rounded-lg">Com certeza, estou pronto(a)!</button>
-                        </div>
-                    </div>
-                    <div id="quiz-calculating" class="hidden">
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mt-4">Analisando suas respostas...</h2>
-                        <p class="text-slate-300 mt-2">Estamos calibrando o plano perfeito e preparando uma condição única para você.</p>
-                        <div class="flex justify-center items-center h-32"><div class="animate-spin rounded-full h-16 w-16 border-b-4 border-green-500"></div></div>
-                    </div>
-                    <div id="quiz-result" class="hidden">
-                        <div class="confetti-container"></div>
-                        <span class="text-yellow-400 font-bold uppercase tracking-widest">Parabéns! Vaga Reservada!</span>
-                        <h2 class="text-3xl md:text-4xl font-black text-white mt-2">Você se Qualificou Para o <span class="gradient-text">Pacote Completo</span>!</h2>
-                        <div class="text-left bg-slate-800/50 border border-slate-700 rounded-lg p-6 my-8">
-                            <p class="font-bold text-white text-center mb-4">Ao garantir seu acesso hoje, você recebe:</p>
-                            <ul class="space-y-3 text-slate-300">
-                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold">O Guia "Reset Metabólico"</span><span class="text-slate-500 line-through ml-2">R$171,00</span></div></li>
-                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold text-green-400">BÔNUS 1:</span> Guia de Receitas<span class="text-slate-500 line-through ml-2">R$47,00</span></div></li>
-                                <li class="flex items-start"><span class="text-green-400 mr-3">✅</span><div><span class="font-bold text-green-400">BÔNUS 2:</span> Checklist Anti-Autossabotagem<span class="text-slate-500 line-through ml-2">R$67,00</span></div></li>
-                            </ul>
-                            <div class="text-center mt-4 pt-4 border-t border-slate-700">
-                                <p class="text-slate-400">Valor Total: <span class="line-through">R$285,00</span></p>
-                                <p class="font-bold text-lg text-white">Seu Acesso Hoje por Apenas:</p>
-                            </div>
-                        </div>
-                        <p class="text-6xl md:text-7xl font-black gradient-text my-2 animate-pulse">R$ 19,90</p>
-                        <p class="text-white font-semibold">ou 2x de R$10,45</p>
-                        <div class="my-4 p-3 bg-red-900/50 border border-red-500/50 rounded-lg" id="timer-container">
-                            <p class="text-red-300 font-semibold">Sua oferta exclusiva expira em:</p>
-                            <div id="countdown-timer" class="text-3xl font-mono font-bold text-red-400 transition-transform duration-300">10:00</div>
-                        </div>
-                        <div class="my-6 p-4 bg-yellow-900/30 border-l-4 border-yellow-500 text-yellow-300" role="alert">
-                            <p>👥 <span id="live-counter" class="font-bold">117</span> pessoas estão vendo esta oferta agora!</p>
-                            <p class="font-bold uppercase mt-2">Atenção: Vagas Quase Esgotadas!</p>
-                            <p>Restam apenas <span id="scarcity-counter" class="text-red-400 font-black text-2xl">11</span> vagas com este desconto.</p>
-                        </div>
-                        <a href="https://pay.cakto.com.br/sjc4xee" class="cta-button inline-block bg-green-600 text-white font-bold text-2xl py-5 px-12 rounded-full w-full mt-2">
-                            SIM, QUERO MINHA TRANSFORMAÇÃO AGORA →
-                        </a>
-                        <div class="mt-8 flex items-center justify-center p-4 bg-slate-800/50 rounded-lg border-2 border-dashed border-slate-600">
-                            <span class="text-5xl mr-4">🛡️</span>
-                            <div class="text-left">
-                                <h4 class="font-bold text-lg text-green-400">GARANTIA BLINDADA DE 7 DIAS</h4>
-                                <p class="text-sm text-slate-400 mt-1">O risco é 100% meu. Se em 7 dias você não amar os resultados, basta um e-mail para ter cada centavo de volta. Simples assim.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- BLOCO 2: O ESPELHO DA DOR -->
+        <section class="w-full px-6 py-10 text-center bg-black border-t border-gray-900">
+            <div class="space-y-6 text-gray-200 text-lg leading-relaxed">
+                <p>O sorriso nas fotos de Natal é real, mas quando você deita a cabeça no travesseiro... <span class="text-white font-bold">o barulho começa.</span></p>
+                
+                <p>Aquele "zumbido" de ansiedade.</p>
+                
+                <p class="italic text-gray-400 border-l-2 border-blood pl-4 mx-4">"Mais um ano passou e você não fez metade do que prometeu."</p>
+                
+                <p>Você recebeu seu 13º, comprou presentes, planejou a viagem... mas por dentro?</p>
+                
+                <p>Por dentro você sente um peso. Uma exaustão que não passa com sono.</p>
+                
+                <p class="text-blood font-bold">É a sujeira emocional de 2025 acumulada.</p>
+                
+                <p>Decepções. Projetos abandonados. Dietas quebradas. Dinheiro mal gasto. Você está carregando um saco de pedras nas costas e tentando correr uma maratona.</p>
+                
+                <h3 class="text-xl font-bold text-white mt-8">Eu tenho uma pergunta para você:</h3>
+                
+                <p>Até quando você vai carregar esse peso morto?</p>
+                
+                <p>Você acha mesmo que a "magia" do dia 31 de dezembro vai resolver seus problemas internos?</p>
+                
+                <p class="text-2xl font-bold text-white uppercase">Não vai.</p>
+                
+                <p>O calendário muda. A sua mente continua a mesma... a menos que você faça algo radical <span class="text-gold underline decoration-gold/50">HOJE</span>.</p>
             </div>
         </section>
 
-        <section id="faq" class="py-20">
-            <div class="container mx-auto px-6 max-w-3xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Ainda tem <span class="gradient-text">Dúvidas</span>?</h2>
-                <div id="faq-container" class="space-y-4">
-                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Como vou receber o acesso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">O acesso é imediato após a confirmação do pagamento. Você receberá um e-mail com seu login e senha para acessar a área de membros exclusiva.</p></div></div>
-                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Por quanto tempo terei acesso?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">O acesso é vitalício! Você pode ver e rever o material quantas vezes quiser, e ainda terá acesso a todas as futuras atualizações sem custo adicional.</p></div></div>
-                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">Preciso de equipamentos caros?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">Não! Os Ativadores Metabólicos foram desenhados para serem feitos em qualquer lugar, usando apenas o peso do seu corpo. Você não precisa de academia ou equipamentos.</p></div></div>
-                    <div class="faq-item glass-card overflow-hidden rounded-lg"><div class="faq-question cursor-pointer p-6 flex justify-between items-center"><h3 class="text-lg font-semibold text-white">E se eu não gostar do método?</h3><span class="faq-icon text-green-400 text-2xl">▼</span></div><div class="faq-answer px-6 pb-6"><p class="text-gray-400">Seu risco é zero. Você tem uma garantia incondicional de 7 dias. Se por qualquer motivo não gostar do método, basta pedir o reembolso e devolveremos 100% do seu dinheiro, sem perguntas.</p></div></div>
+        <!-- BLOCO 3: A SOLUÇÃO -->
+        <section class="w-full px-6 py-12 text-center bg-gradient-to-b from-black to-[#0a0a0a]">
+            <h2 class="text-2xl font-bold text-white mb-8 tracking-widest border-b border-gray-800 pb-4 inline-block">
+                APRESENTAMOS: <span class="text-gold">O PROTOCOLO SESSÃO ZERO</span>
+            </h2>
+
+            <!-- Mockup do Produto (Celular tocando a faixa) -->
+            <div class="mx-auto w-64 h-96 bg-black border-4 border-gray-800 rounded-3xl p-4 flex flex-col justify-between player-mockup relative mb-8">
+                <!-- Topo Celular -->
+                <div class="w-full flex justify-between text-xs text-gray-500 mb-4">
+                    <span>11:11</span>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                
+                <!-- Arte da Faixa -->
+                <div class="w-full aspect-square bg-gray-900 rounded-lg flex items-center justify-center border border-gray-800 shadow-inner">
+                    <i class="fas fa-fingerprint text-6xl text-gray-700"></i>
+                </div>
+
+                <!-- Info Faixa -->
+                <div class="text-left mt-4">
+                    <h4 class="text-white font-bold text-lg">Faixa 01: O Expurgo</h4>
+                    <p class="text-gray-500 text-sm">Sessão Zero</p>
+                </div>
+
+                <!-- Controles -->
+                <div class="mt-2">
+                    <div class="w-full bg-gray-800 h-1 rounded-full mb-4">
+                        <div class="bg-gold h-1 w-1/3 rounded-full relative">
+                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-white px-2 mb-4">
+                        <i class="fas fa-backward text-xl text-gray-500"></i>
+                        <div class="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center text-xl">
+                            <i class="fas fa-pause"></i>
+                        </div>
+                        <i class="fas fa-forward text-xl text-gray-500"></i>
+                    </div>
                 </div>
             </div>
+
+            <p class="text-gray-300 text-lg leading-relaxed max-w-sm mx-auto">
+                "Não é meditação comum. É uma <strong class="text-white">Limpeza de Disco Rígido</strong>. Uma experiência de áudio imersiva, desenhada para entrar no subconsciente e fazer a faxina pesada que você não consegue fazer sozinho."
+            </p>
         </section>
+
+        <!-- BLOCO 4: O QUE VEM DENTRO -->
+        <section class="w-full px-6 py-12 bg-black">
+            <div class="space-y-8 max-w-sm mx-auto">
+                
+                <!-- Faixa 01 -->
+                <div class="flex flex-col text-left border-l-2 border-gray-800 pl-4">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <span>🔇</span> FAIXA 01: O EXPURGO <span class="text-xs text-gray-500 border border-gray-700 px-1 rounded ml-2">A Liberação</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Você vai sentir a ansiedade saindo fisicamente do seu corpo. Sabe aquele "nó na garganta"? Nós vamos desatá-lo nos primeiros 10 minutos.
+                    </p>
+                </div>
+
+                <!-- Faixa 02 -->
+                <div class="flex flex-col text-left border-l-2 border-blood pl-4">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <span>❤️‍🩹</span> FAIXA 02: O PERDÃO ABSOLUTO <span class="text-xs text-gray-500 border border-gray-700 px-1 rounded ml-2">A Cura</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Você vai parar de ser seu próprio inimigo. Vamos cicatrizar as feridas de 2025. Você vai se olhar no espelho e sentir orgulho de ter sobrevivido.
+                    </p>
+                </div>
+
+                <!-- Faixa 03 -->
+                <div class="flex flex-col text-left border-l-2 border-gray-800 pl-4">
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <span>✨</span> FAIXA 03: O VÁCUO <span class="text-xs text-gray-500 border border-gray-700 px-1 rounded ml-2">O Renascimento</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm">
+                        Frequências para induzir sono profundo. Você vai apagar o passado e acordar amanhã com uma energia que não sentia há anos.
+                    </p>
+                </div>
+
+                <!-- Bônus -->
+                <div class="bg-gray-900/50 p-4 rounded-lg border border-gold/30 mt-6">
+                    <h3 class="text-gold font-bold mb-2 flex items-center gap-2">
+                        <span>🔥</span> BÔNUS: MANUAL DA FOGUEIRA
+                    </h3>
+                    <p class="text-gray-300 text-sm">
+                        O guia prático (PDF) para materializar seus problemas no papel e queimá-los fisicamente.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BLOCO 5: A ANCORAGEM DE PREÇO -->
+        <section class="w-full px-6 py-12 text-center">
+            <div class="border border-gray-800 rounded-xl overflow-hidden max-w-sm mx-auto">
+                <div class="p-4 border-b border-gray-800 flex justify-between items-center opacity-50">
+                    <span class="text-gray-400">❌ Terapia (1 Sessão)</span>
+                    <span class="text-gray-400 line-through">R$ 250,00</span>
+                </div>
+                <div class="p-4 border-b border-gray-800 flex justify-between items-center opacity-50">
+                    <span class="text-gray-400">❌ Pizza no Fim de Semana</span>
+                    <span class="text-gray-400 line-through">R$ 60,00</span>
+                </div>
+                <div class="p-5 bg-gray-900 flex justify-between items-center border-l-4 border-gold">
+                    <span class="text-white font-bold text-left">✅ Sua Paz Mental <br><span class="text-xs font-normal text-gold uppercase">Acesso Vitalício</span></span>
+                    <span class="text-gold font-bold text-xl">R$ 34,90</span>
+                </div>
+            </div>
+            <p class="text-gray-400 text-sm mt-4 max-w-xs mx-auto">
+                "Isso não é um gasto. É o ticket de saída do seu sofrimento atual. Custa menos que um Uber."
+            </p>
+        </section>
+
+        <!-- BLOCO 6: OFERTA FINAL E GARANTIA -->
+        <section class="w-full px-6 py-16 text-center bg-[#1a1a1a] border-t-4 border-gold">
+            
+            <p class="text-gray-500 font-bold mb-2 text-lg">DE <span class="line-through decoration-red-500">R$ 97,00</span></p>
+            <h2 class="text-5xl font-black text-white mb-8">POR R$ 34,90</h2>
+
+            <a href="#" class="block w-full bg-green-500 text-black font-black text-xl py-6 rounded-lg uppercase tracking-wide shadow-[0_0_20px_rgba(34,197,94,0.5)] transform hover:scale-105 transition-all mb-10">
+                Quero limpar minha mente agora
+                <br><span class="text-xs font-normal opacity-80">Acesso imediato no e-mail</span>
+            </a>
+
+            <!-- Garantia -->
+            <div class="max-w-xs mx-auto border border-gray-700 p-6 rounded-xl bg-black relative">
+                <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-black border border-gray-700 p-2 rounded-full">
+                    <i class="fas fa-shield-alt text-3xl text-gold"></i>
+                </div>
+                <h4 class="text-white font-bold mt-4 mb-2 uppercase tracking-wide">Desafio do Alívio</h4>
+                <p class="text-gray-400 text-sm">
+                    Ouça hoje à noite. Se não sentir um peso gigante saindo das costas, eu devolvo 100% do seu dinheiro. <strong class="text-white">O risco é todo meu.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- BLOCO 7: RODAPÉ -->
+        <footer class="w-full px-6 py-12 text-center bg-black text-gray-500 text-sm border-t border-gray-900">
+            <div class="space-y-4 mb-8 max-w-sm mx-auto text-left">
+                <h4 class="font-bold text-gray-300 text-center mb-4 uppercase text-xs tracking-widest">Perguntas Frequentes</h4>
+                
+                <details class="bg-gray-900/30 rounded px-4 py-2 cursor-pointer border border-gray-800">
+                    <summary class="font-semibold text-gray-300">Preciso saber meditar?</summary>
+                    <p class="mt-2 text-gray-400 pl-4 border-l border-gray-700">Não, é só ouvir e deixar o áudio te guiar.</p>
+                </details>
+
+                <details class="bg-gray-900/30 rounded px-4 py-2 cursor-pointer border border-gray-800">
+                    <summary class="font-semibold text-gray-300">Como recebo?</summary>
+                    <p class="mt-2 text-gray-400 pl-4 border-l border-gray-700">Chega no seu e-mail cadastrado imediatamente após a compra.</p>
+                </details>
+
+                <details class="bg-gray-900/30 rounded px-4 py-2 cursor-pointer border border-gray-800">
+                    <summary class="font-semibold text-gray-300">Funciona para ansiedade?</summary>
+                    <p class="mt-2 text-gray-400 pl-4 border-l border-gray-700">Foi desenhado especificamente para ansiedade e excesso de pensamentos.</p>
+                </details>
+            </div>
+
+            <p class="opacity-50">Copyright © 2025 Sessão Zero.</p>
+            <p class="opacity-50">Todos os direitos reservados.</p>
+        </footer>
+
     </main>
 
-    <footer class="bg-slate-900 text-white text-center py-6 px-4" data-aos="fade-up">
-        <p>&copy; 2025 Método Reset Metabólico. Todos os direitos reservados.</p>
-        <p class="text-sm text-slate-400 mt-2 max-w-3xl mx-auto">Este produto se trata de um livro digital (ebook) e não garante a obtenção de resultados. Qualquer referência ao desempenho de uma estratégia não deve ser interpretada como uma garantia de resultados. Consulte sempre um profissional da saúde antes de iniciar qualquer programa de exercícios ou plano alimentar.</p>
-    </footer>
-
-    <div id="social-proof-popup" class="floating-purchase-popup glass-card"><div class="p-3 flex items-center"><span class="text-green-400 mr-3 text-2xl">🎉</span><p id="popup-message" class="text-sm text-slate-200"></p></div></div>
-    <audio id="notification-sound" preload="auto"><source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2c649d2263.mp3" type="audio/mpeg"></audio>
-    
-    <div id="exit-intent-popup" class="hidden fixed inset-0 bg-black/80 z-[10001] flex items-center justify-center p-4 opacity-0 visibility-hidden">
-        <div class="glass-card max-w-md w-full p-8 rounded-2xl text-center relative" data-aos="zoom-in">
-            <button id="close-exit-popup" class="absolute top-4 right-4 text-slate-400 hover:text-white text-3xl">&times;</button>
-            <h2 class="text-3xl font-bold text-white mb-4"><span class="gradient-text">ESPERE!</span></h2>
-            <p class="text-slate-300 mb-6">Você está a um passo de desistir da sua transformação... Como incentivo final, liberei um <span class="font-bold text-yellow-400">BÔNUS SURPRESA</span> para você: O Guia de Receitas Detox de 7 Dias.</p>
-            <a href="#preco" id="exit-popup-cta" class="cta-button inline-block bg-green-600 text-white font-bold text-lg py-3 px-8 rounded-full">PEGAR BÔNUS E VOLTAR À OFERTA</a>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const headline = document.getElementById('animated-headline');
-        if (headline) {
-            const text = headline.textContent.trim();
-            const words = text.split(' ');
-            headline.innerHTML = '';
-            words.forEach((word, index) => {
-                const wordSpan = document.createElement('span');
-                if(word.includes('Versão.')){
-                    wordSpan.className = 'word gradient-text';
-                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : '');
-                } else {
-                     wordSpan.className = 'word';
-                    wordSpan.textContent = word + (index < words.length - 1 ? '\u00A0' : '');
-                }
-                wordSpan.style.setProperty('--delay', `${index * 0.15}s`);
-                headline.appendChild(wordSpan);
-            });
-        }
-
-        const quizContainer = document.getElementById('quiz-container');
-        if (quizContainer) {
-            const quizSteps = quizContainer.querySelectorAll('[id^="quiz-step-"], [id^="quiz-calculating"], [id^="quiz-result"]');
-            const quizButtons = quizContainer.querySelectorAll('.quiz-button');
-            let countdownInterval;
-
-            function startCountdown(durationMinutes) {
-                const timerElement = document.getElementById('countdown-timer');
-                const timerContainer = document.getElementById('timer-container');
-                if (!timerElement) return;
-                let timer = durationMinutes * 60;
-                clearInterval(countdownInterval);
-                countdownInterval = setInterval(() => {
-                    let minutes = parseInt(timer / 60, 10);
-                    let seconds = parseInt(timer % 60, 10);
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-                    timerElement.textContent = minutes + ":" + seconds;
-                    if (timer < 120 && timerContainer) { // Under 2 minutes
-                        timerContainer.classList.add('timer-pulse');
-                    }
-                    if (--timer < 0) {
-                        clearInterval(countdownInterval);
-                        timerElement.textContent = "Oferta Expirada!";
-                        if(timerContainer) timerContainer.classList.remove('timer-pulse');
-                        const ctaButton = document.querySelector('#quiz-result .cta-button');
-                        if (ctaButton) ctaButton.classList.add('opacity-50', 'pointer-events-none');
-                    }
-                }, 1000);
-            }
-
-            function createConfetti(container) {
-                const colors = ['#22c55e', '#facc15', '#10b981', '#f97316', '#ffffff'];
-                for (let i = 0; i < 40; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti');
-                    confetti.style.setProperty('--confetti-color', colors[Math.floor(Math.random() * colors.length)]);
-                    confetti.style.setProperty('--x', `${(Math.random() - 0.5) * 800}px`);
-                    confetti.style.setProperty('--y', `${(Math.random() - 0.5) * 800}px`);
-                    confetti.style.setProperty('--delay', `${Math.random() * 0.5}s`);
-                    container.appendChild(confetti);
-                    confetti.addEventListener('animationend', () => { confetti.remove(); });
-                }
-            }
-
-            function showStep(stepIdToShow) {
-                quizSteps.forEach(step => {
-                    step.id === stepIdToShow ? step.classList.remove('hidden') : step.classList.add('hidden');
-                });
-                if (stepIdToShow === 'quiz-calculating') {
-                    setTimeout(() => showStep('quiz-result'), 2500);
-                } else if (stepIdToShow === 'quiz-result') {
-                    const resultContainer = document.getElementById('quiz-result');
-                    const confettiContainer = resultContainer.querySelector('.confetti-container');
-                    setTimeout(() => {
-                        resultContainer.classList.add('animate-surprise');
-                        if (confettiContainer) createConfetti(confettiContainer);
-                    }, 50);
-                    startCountdown(10);
-                }
-            }
-
-            quizButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const nextStepId = button.getAttribute('data-next-step');
-                    if (nextStepId) showStep(nextStepId);
-                });
-            });
-        }
-        
-        const liveCounter = document.getElementById('live-counter');
-        if(liveCounter){
-            let count = 117;
-            setInterval(() => {
-                const change = Math.floor(Math.random() * 5) - 2;
-                count = Math.max(100, count + change);
-                liveCounter.textContent = count;
-            }, 3000);
-        }
-
-        (function() {
-            const nomes = ["Maria S. de Salvador", "João P. de Lisboa", "Ana C. de São Paulo", "Carlos A. do Porto", "Fernanda L. do Rio de Janeiro", "Lucas M. de Curitiba"];
-            const mensagens = ["acabou de garantir o acesso!", "comprou o Guia Reset Metabólico!", "iniciou sua transformação!"];
-            const popupElement = document.getElementById('social-proof-popup');
-            const messageElement = document.getElementById('popup-message');
-            const audioElement = document.getElementById('notification-sound');
-            const scarcityElement = document.getElementById('scarcity-counter');
-            if (!popupElement || !messageElement || !audioElement) return;
-            function unlockAudio() {
-                audioElement.play().catch(() => {});
-                audioElement.pause();
-                audioElement.currentTime = 0;
-                document.removeEventListener('click', unlockAudio);
-            }
-            document.addEventListener('click', unlockAudio);
-            const mostrarPopup = () => {
-                messageElement.innerHTML = `<strong>${nomes[Math.floor(Math.random() * nomes.length)]}</strong> ${mensagens[Math.floor(Math.random() * mensagens.length)]}`;
-                popupElement.classList.add('show');
-                audioElement.currentTime = 0;
-                audioElement.play().catch(error => {});
-                if(scarcityElement) {
-                    let vagasAtuais = parseInt(scarcityElement.textContent);
-                    if (vagasAtuais > 4) {
-                        scarcityElement.textContent = vagasAtuais - 1;
-                        scarcityElement.classList.add('updated');
-                        setTimeout(() => { scarcityElement.classList.remove('updated'); }, 500);
-                    }
-                }
-                setTimeout(() => { popupElement.classList.remove('show'); }, 5000);
-            };
-            const runPopupCycle = () => {
-                mostrarPopup();
-                setTimeout(runPopupCycle, Math.floor(Math.random() * 8000) + 7000);
-            };
-            setTimeout(runPopupCycle, 6000);
-        })();
-
-        const faqContainer = document.getElementById('faq-container');
-        if (faqContainer) {
-            faqContainer.addEventListener('click', (e) => {
-                const questionHeader = e.target.closest('.faq-question');
-                if (questionHeader) {
-                    const currentItem = questionHeader.parentElement;
-                    currentItem.classList.toggle('open');
-                }
-            });
-        }
-        
-        const exitPopup = document.getElementById('exit-intent-popup');
-        const closeExitPopup = document.getElementById('close-exit-popup');
-        const exitPopupCta = document.getElementById('exit-popup-cta');
-        if(exitPopup && closeExitPopup && exitPopupCta) {
-            let popupShown = false;
-            document.addEventListener('mouseleave', (e) => {
-                if (e.clientY <= 0 && !popupShown) {
-                    popupShown = true;
-                    exitPopup.classList.remove('hidden');
-                    setTimeout(() => exitPopup.classList.add('opacity-100', 'visible'), 10);
-                }
-            });
-            const close = () => {
-                exitPopup.classList.remove('opacity-100', 'visible');
-                setTimeout(() => exitPopup.classList.add('hidden'), 300);
-            };
-            closeExitPopup.addEventListener('click', close);
-            exitPopupCta.addEventListener('click', close);
-        }
-
-        AOS.init({ offset: 120, delay: 0, duration: 800, easing: 'ease', once: true, mirror: false, anchorPlacement: 'top-bottom' });
-    });
-    </script>
 </body>
 </html>
+
